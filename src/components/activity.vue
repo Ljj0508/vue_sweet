@@ -18,7 +18,7 @@
       <el-table-column label="操作" fixed="right" width="100px">
         <template slot-scope="scope">
           <el-button type="text" @click="showDialog(scope.row)">修改</el-button>
-          <el-button type="text" @click="delete(scope.row.acid)">删除</el-button>
+          <el-button type="text" @click="del(scope.row.acid)">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -114,7 +114,7 @@ export default {
     }
   },
   methods: {
-    delete: function (row) {
+    del: function (row) {
       this.$axios.post('http://localhost:8888/sweet/Activity/del?id=' + row + '')
         .then(response => {
           if (response.data = 1) {
@@ -135,7 +135,6 @@ export default {
       this.activity = {}
     },
     update: function () {
-      console.log(this.activity)
       this.$axios.post('http://localhost:8888/sweet/Activity/update', this.$qs.stringify(this.activity))
         .then(response => {
           if (response.data = 1) {

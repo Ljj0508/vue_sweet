@@ -4,7 +4,7 @@
     <div id="head">
       <el-header>
         <el-dropdown style="float: right" @command="handlerCommand">
-          <span class="a">欢迎{{$route.params.yonghu}}</span>
+          <span class="a">欢迎{{$route.params.loginUser}}</span>
           <i class="el-icon-arrow-down"></i>
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item command="personal">个人信息</el-dropdown-item>
