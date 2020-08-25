@@ -27,9 +27,13 @@
             </el-menu-item>
             <el-menu-item index="2-2">
               <i class="el-icon-camera"></i>
+              <span @click="VIPShow">会员用户</span>
+            </el-menu-item>
+            <el-menu-item index="2-3">
+              <i class="el-icon-camera"></i>
               <span @click="">择偶信息</span>
             </el-menu-item>
-            <el-menu-item index="2-2">
+            <el-menu-item index="2-4">
               <i class="el-icon-camera"></i>
               <span @click="">禁用用户</span>
             </el-menu-item>
@@ -63,13 +67,27 @@
               <i class="el-icon-aim"></i>
               <span>套餐管理</span>
             </template>
-            <el-menu-item index="4-1">
-              <i class="el-icon-camera"></i>
-              <span @click="VIPShow">会员套餐</span>
-            </el-menu-item>
-            <el-menu-item index="4-1">
+            <el-menu-item index="5-1">
+            <i class="el-icon-camera"></i>
+            <span @click="">会员套餐</span>
+          </el-menu-item>
+            <el-menu-item index="5-2">
               <i class="el-icon-camera"></i>
               <span @click="TOPShow">置顶套餐</span>
+            </el-menu-item>
+          </el-submenu>
+          <el-submenu index="6">
+            <template slot="title">
+              <i class="el-icon-aim"></i>
+              <span>媒体管理</span>
+            </template>
+            <el-menu-item index="6-1">
+              <i class="el-icon-camera"></i>
+              <span @click="SuccessShow">成功案例</span>
+            </el-menu-item>
+            <el-menu-item index="6-2">
+              <i class="el-icon-camera"></i>
+              <span @click="">节目广告</span>
             </el-menu-item>
           </el-submenu>
         </el-menu>
@@ -101,7 +119,7 @@ export default {
     },
 
     VIPShow: function () {
-      this.$axios.post('http://localhost:8888/sweet/')
+      this.$axios.post('http://localhost:8888/sweet/vip/findAll')
         .then(response => {
           console.log(response.data)
           if (response.data != null) {
@@ -109,8 +127,9 @@ export default {
           }
         })
     },
+
     TOPShow: function () {
-      this.$axios.post('http://localhost:8888/sweet/')
+      this.$axios.post('http://localhost:8888/sweet/Top/findAll')
         .then(response => {
           console.log(response.data)
           if (response.data != null) {
@@ -133,6 +152,15 @@ export default {
           console.log(response.data)
           if (response.data != null) {
             this.$router.push({name: 'paste', query: {paste: response.data}})
+          }
+        })
+    },
+    SuccessShow: function () {
+      this.$axios.post('http://localhost:8888/sweet/Success/findAll')
+        .then(response => {
+          console.log(response.data)
+          if (response.data != null) {
+            this.$router.push({name: 'success', query: {success: response.data}})
           }
         })
     }
