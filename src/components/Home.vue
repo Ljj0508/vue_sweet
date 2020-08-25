@@ -55,7 +55,7 @@
             </template>
             <el-menu-item index="4-1">
               <i class="el-icon-camera"></i>
-              <span @click="">查看帖子</span>
+              <span @click="PasteShow">查看帖子</span>
             </el-menu-item>
           </el-submenu>
           <el-submenu index="5">
@@ -89,6 +89,7 @@ export default {
     handlerCommand: function (command) {
       this.$router.push({name: command})
     },
+
     activityshow: function () {
       this.$axios.post('http://localhost:8888/sweet/Activity/findAll')
         .then(response => {
@@ -98,6 +99,7 @@ export default {
           }
         })
     },
+
     VIPShow: function () {
       this.$axios.post('http://localhost:8888/sweet/')
         .then(response => {
@@ -122,6 +124,15 @@ export default {
           console.log(response.data)
           if (response.data != null) {
             this.$router.push({name: 'apply', query: {apply: response.data}})
+          }
+        })
+    },
+    PasteShow: function () {
+      this.$axios.post('http://localhost:8888/sweet/send_paste/findAll')
+        .then(response => {
+          console.log(response.data)
+          if (response.data != null) {
+            this.$router.push({name: 'paste', query: {paste: response.data}})
           }
         })
     }

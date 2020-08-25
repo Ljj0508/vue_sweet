@@ -16,7 +16,7 @@ export default new Router({
       component: () => import('../components/Home'),
       children: [
         {
-          path: 'activity',
+          path: '/activity',
           name: 'activity',
           component: () => import('../components/activity')
         },
@@ -24,6 +24,16 @@ export default new Router({
           path: '/apply',
           name: 'apply',
           component: () => import('../components/apply')
+        },
+        {
+          path: '/paste',
+          name: 'paste',
+          component: () => import('../components/paste')
+        },
+        {
+          path: '/comment',
+          name: 'comment',
+          component: () => import('../components/comment')
         }
       ]
     }
