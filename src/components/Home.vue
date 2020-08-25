@@ -23,11 +23,53 @@
             </template>
             <el-menu-item index="2-1">
               <i class="el-icon-camera"></i>
-              <span @click="activityshow">活动管理</span>
+              <span @click="">查看用户</span>
             </el-menu-item>
             <el-menu-item index="2-2">
               <i class="el-icon-camera"></i>
-              <span @click="applyshow">报名管理</span>
+              <span @click="">择偶信息</span>
+            </el-menu-item>
+            <el-menu-item index="2-2">
+              <i class="el-icon-camera"></i>
+              <span @click="">禁用用户</span>
+            </el-menu-item>
+          </el-submenu>
+          <el-submenu index="3">
+          <template slot="title">
+            <i class="el-icon-aim"></i>
+            <span>活动管理</span>
+          </template>
+          <el-menu-item index="3-1">
+            <i class="el-icon-camera"></i>
+            <span @click="activityshow">所有活动</span>
+          </el-menu-item>
+          <el-menu-item index="3-2">
+            <i class="el-icon-camera"></i>
+            <span @click="applyshow">报名查看</span>
+          </el-menu-item>
+          </el-submenu>
+          <el-submenu index="4">
+            <template slot="title">
+              <i class="el-icon-aim"></i>
+              <span>朋友圈</span>
+            </template>
+            <el-menu-item index="4-1">
+              <i class="el-icon-camera"></i>
+              <span @click="">查看帖子</span>
+            </el-menu-item>
+          </el-submenu>
+          <el-submenu index="5">
+            <template slot="title">
+              <i class="el-icon-aim"></i>
+              <span>套餐管理</span>
+            </template>
+            <el-menu-item index="4-1">
+              <i class="el-icon-camera"></i>
+              <span @click="VIPShow">会员套餐</span>
+            </el-menu-item>
+            <el-menu-item index="4-1">
+              <i class="el-icon-camera"></i>
+              <span @click="TOPShow">置顶套餐</span>
             </el-menu-item>
           </el-submenu>
         </el-menu>
@@ -53,6 +95,24 @@ export default {
           console.log(response.data)
           if (response.data != null) {
             this.$router.push({name: 'activity', query: {activity: response.data}})
+          }
+        })
+    },
+    VIPShow: function () {
+      this.$axios.post('http://localhost:8888/sweet/')
+        .then(response => {
+          console.log(response.data)
+          if (response.data != null) {
+            this.$router.push({name: 'vip', query: {vip: response.data}})
+          }
+        })
+    },
+    TOPShow: function () {
+      this.$axios.post('http://localhost:8888/sweet/')
+        .then(response => {
+          console.log(response.data)
+          if (response.data != null) {
+            this.$router.push({name: 'top', query: {top: response.data}})
           }
         })
     },
