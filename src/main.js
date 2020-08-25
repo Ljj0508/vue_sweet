@@ -14,7 +14,7 @@ Vue.config.productionTip = false
 // 使用模块
 // 定义全局属性
 Vue.prototype.$axios = axios
-
+//
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

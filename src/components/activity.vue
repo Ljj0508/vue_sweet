@@ -64,6 +64,7 @@
     </el-dialog>
     <!--添加员工-->
     <!--添加模态框-->
+
     <el-dialog width="40%" title="添加活动" :visible="addVisible">
       <el-form label-width="100px" label-suffix="：" class="form"  ref="fm">
         <el-form-item label="活动标题" prop="title">
