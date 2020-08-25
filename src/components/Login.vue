@@ -31,7 +31,7 @@
           // require:进行校验,默认校验非空  message:提示信息  trigger:触发校验的事件
           {required: true, message: '用户名不能为空', trigger: 'blur'},
           {min: 2, max: 10, message: '用户名是2-10位', trigger: ['change', 'blur']},
-          // 自定义校验规 则
+          // 自定义校验规则
           {trigger: ['change', 'blur'],
             validator: function (rule, value, callback) {
 // eslint-disable-next-line indent

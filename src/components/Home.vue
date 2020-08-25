@@ -33,7 +33,7 @@
         </el-menu>
       </div>
       <div id="right">
-        <!-- 二级路由  -->
+        <!-- 二级路由 -->
         <router-view></router-view>
       </div>
     </div>
