@@ -8,22 +8,32 @@
       <el-table-column prop="number" label="账号ID"></el-table-column>
       <el-table-column prop="bmname" label="昵称"></el-table-column>
       <el-table-column prop="age" label="年龄"></el-table-column>
-      <el-table-column prop="height" label="身高"></el-table-column>
-      <el-table-column prop="weight" label="体重"></el-table-column>
+     <!-- <el-table-column prop="height" label="身高"></el-table-column>
+      <el-table-column prop="weight" label="体重"></el-table-column>-->
       <el-table-column prop="sex" label="性别">
         <template slot-scope="basic_message">
           {{basic_message.row.sex==0?"女":"男"}}
         </template>
       </el-table-column>
+      <!--<el-table-column prop="sex" label="性别"></el-table-column>-->
       <el-table-column prop="phone" label="手机号"></el-table-column>
-      <el-table-column prop="password" label="密码"></el-table-column>
-      <el-table-column prop="address" label="工作地区"></el-table-column>
-      <el-table-column prop="birthday" label="出生年月"></el-table-column>
-      <el-table-column prop="marriage" label="婚姻状况">
-        <template slot-scope="marriage">
-          {{basic_message.row.marriage==0?"未婚":"离婚"}}
-        </template>
-      </el-table-column>
+      <el-table-column prop="pwd" label="密码"></el-table-column>
+      <!--<el-table-column prop="address" label="工作地区"></el-table-column>
+      <el-table-column prop="birthday" label="出生年月"></el-table-column>-->
+      <!--<el-table-column prop="marriage" label="婚姻状况">-->
+      <!--<template slot-scope="marriage">-->
+        <!--<div v-if="basic_message.row.marriage==0">-->
+          <!--<div>未婚</div>-->
+        <!--</div>-->
+        <!--<div v-if="basic_message.row.marriage==1">-->
+          <!--<div>离婚</div>-->
+        <!--</div>-->
+        <!--<div v-if="basic_message.row.marriage==2">-->
+          <!--<div>丧偶</div>-->
+        <!--</div>-->
+      <!--</template>-->
+    <!--</el-table-column>-->
+      <el-table-column prop="marriage" label="婚姻状况"></el-table-column>
       <el-table-column prop="vip" label="会员">
         <template slot-scope="basic_message">
           {{basic_message.row.vip==0?"会员":"非会员"}}
@@ -37,7 +47,6 @@
       <el-table-column label="操作" fixed="right" width="100px">
         <template slot-scope="scope">
           <el-button type="text" @click="showDialog(scope.row)">修改</el-button>
-          <el-button type="text" @click="del(scope.row.acid)">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -102,14 +111,13 @@
 <script>
 export default {
   name: 'basic_message',
-  data() {
+  data () {
     return {
       updateVisible: false,
       addVisible: false,
       basic_message: {}
     }
   },
-
   showDialog: function (row) {
     // 显示模态窗口
     this.updateVisible = true
