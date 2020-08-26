@@ -2,7 +2,6 @@
   <div><!--
     <h1>员工管理  <el-button type="success" @click="showDialogadd">添加</el-button></h1>-->
     <!-- data:绑定数据  height:声明之后会固定表头-->
-    <el-button round @click="showDialog2()">添加</el-button>
     <el-table :data="this.$route.query.top" width="100%" height="550px" :stripe="true" border>
       <!-- prop显示绑定的数据的属性 -->
       <el-table-column prop="topid" label="编号"></el-table-column>
@@ -18,7 +17,7 @@
       <el-table-column label="操作" fixed="right" width="100px">
         <template slot-scope="scope">
           <el-button type="text" @click="showDialog(scope.row)">修改</el-button>
-          <el-button type="text" @click="del(scope.row.topid)">删除</el-button>
+
         </template>
       </el-table-column>
     </el-table>
@@ -49,27 +48,6 @@
     </el-dialog>
     <!--添加员工-->
     <!--添加模态框-->
-
-    <el-dialog width="40%" title="添加置顶套餐" :visible="addVisible">
-      <el-form label-width="100px" label-suffix="：" class="form"  ref="fm">
-        <el-form-item label="套餐名称" prop="tname">
-          <el-input v-model="top.tname" name="tname"></el-input>
-        </el-form-item>
-        <el-form-item label="套餐价格" prop="price">
-          <el-input v-model="top.price" name="price"></el-input>
-        </el-form-item>
-        <el-form-item label="置顶权益" prop="benefit">
-          <el-input v-model="top.benefit" name="benefit"></el-input>
-        </el-form-item>
-        <el-form-item label="状态" prop="state">
-          <el-input v-model="top.state" name="state"></el-input>
-        </el-form-item>
-      </el-form>
-      <div slot="footer" class="dialog-footer">
-        <el-button type="primary" @click="add();addVisible=false">添 加</el-button>
-        <el-button type="success" @click="addVisible = false">取 消</el-button>
-      </div>
-    </el-dialog>
   </div>
 </template>
 
