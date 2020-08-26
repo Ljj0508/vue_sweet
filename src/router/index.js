@@ -55,6 +55,7 @@ export default new Router({
           name: 'basic_message',
           component: () => import('../components/basic_message')
         },
+        //
         {
           path: '/dispose',
           name: 'dispose',

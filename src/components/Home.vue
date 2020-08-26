@@ -177,6 +177,7 @@ export default {
           }
         })
     },
+    //
     ShowDispose: function () {
       this.$axios.post('http://localhost:8888/sweet/dispose/findAll')
         .then(response => {
