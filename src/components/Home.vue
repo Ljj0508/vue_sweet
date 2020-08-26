@@ -37,6 +37,10 @@
               <i class="el-icon-camera"></i>
               <span @click="">禁用用户</span>
             </el-menu-item>
+            <el-menu-item index="2-5">
+              <i class="el-icon-camera"></i>
+              <span @click="ShowDispose">举报记录</span>
+            </el-menu-item>
           </el-submenu>
           <el-submenu index="3">
           <template slot="title">
@@ -170,6 +174,15 @@ export default {
           console.log(response.data)
           if (response.data != null) {
             this.$router.push({name: 'basic_message', query: {basic_message: response.data}})
+          }
+        })
+    },
+    ShowDispose: function () {
+      this.$axios.post('http://localhost:8888/sweet/dispose/findAll')
+        .then(response => {
+          console.log(response.data)
+          if (response.data != null) {
+            this.$router.push({name: 'dispose', query: {dispose: response.data}})
           }
         })
     }
