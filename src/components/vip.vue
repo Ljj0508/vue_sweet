@@ -16,12 +16,12 @@
 
 <script>
 export default {
-  name: 'activity',
+  name: 'vip',
   data () {
     return {
       updateVisible: false,
       addVisible: false,
-      activity: {}
+      vip: {}
     }
   }
 }

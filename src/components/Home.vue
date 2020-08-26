@@ -23,7 +23,7 @@
             </template>
             <el-menu-item index="2-1">
               <i class="el-icon-camera"></i>
-              <span @click="">查看用户</span>
+              <span @click="basic_message">查看用户</span>
             </el-menu-item>
             <el-menu-item index="2-2">
               <i class="el-icon-camera"></i>
@@ -161,6 +161,15 @@ export default {
           console.log(response.data)
           if (response.data != null) {
             this.$router.push({name: 'success', query: {success: response.data}})
+          }
+        })
+    },
+    basic_message: function () {
+      this.$axios.post('http://localhost:8888/sweet/basic_message/ShowAll')
+        .then(response => {
+          console.log(response.data)
+          if (response.data != null) {
+            this.$router.push({name: 'basic_message', query: {basic_message: response.data}})
           }
         })
     }

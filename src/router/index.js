@@ -49,6 +49,11 @@ export default new Router({
           path: '/comment',
           name: 'comment',
           component: () => import('../components/comment')
+        },
+        {
+          path: '/basic_message',
+          name: 'basic_message',
+          component: () => import('../components/basic_message')
         }
       ]
     }
