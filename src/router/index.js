@@ -79,6 +79,21 @@ export default new Router({
           path: '/choose_mate',
           name: 'choose_mate',
           component: () => import('../components/choose_mate')
+        },
+        {
+          path: '/attention',
+          name: 'attention',
+          component: () => import('../components/attention')
+        },
+        {
+          path: '/emp',
+          name: 'emp',
+          component: () => import('../components/emp')
+        },
+        {
+          path: '/message',
+          name: 'message',
+          component: () => import('../components/message')
         }
       ]
     }

@@ -46,7 +46,7 @@
       </el-table-column>
       <el-table-column label="操作" fixed="right" width="100px">
         <template slot-scope="scope">
-          <el-button type="text" @click="showDialog(scope.row)">修改</el-button>
+          <el-button type="text" @click="updateVisible=true;showDialog(scope.row)">修改</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -111,28 +111,29 @@
 <script>
 export default {
   name: 'basic_message',
-  data () {
+  data() {
     return {
       updateVisible: false,
       addVisible: false,
       basic_message: {}
     }
   },
-  showDialog: function (row) {
-    // 显示模态窗口
-    this.updateVisible = true
-    this.basic_message = row
-  },
+  methods: {
+    showDialog: function (row) {
+      console.log(row)
+      this.basic_message = row
+    },
 
-  update: function () {
-    this.$axios.post('http://localhost:8888/sweet/basic_message/update', this.$qs.stringify(this.basic_message))
-      .then(response => {
-        if (response.data = 1) {
-          alert('修改成功')
-        } else {
-          alert('修改失败')
-        }
-      })
+    update: function () {
+      this.$axios.post('http://localhost:8888/sweet/basic_message/update', this.$qs.stringify(this.basic_message))
+        .then(response => {
+          if (response.data = 1) {
+            alert('修改成功')
+          } else {
+            alert('修改失败')
+          }
+        })
+    }
   }
 }
 
