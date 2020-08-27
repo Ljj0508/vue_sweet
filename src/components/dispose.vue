@@ -24,18 +24,19 @@
 
       <el-table-column label="操作" fixed="right" width="100px">
         <template slot-scope="scope">
-          <el-button type="text" @click="showDialogMTK(scope.row)">修改</el-button>
-        </template>
-      </el-table-column>
-    </el-table>
+          <!--<el-button type="text" @click="showDialog(scope.row)">修改</el-button>-->
+          <el-button type="primary" icon="el-icon-edit" @click="updateVisible=true;showDialog(scope.row)"></el-button>
+       </template>
+     </el-table-column>
+   </el-table>
 
-    <!--修改模态框-->
+   <!--修改模态框-->
     <el-dialog width="40%" title="修改举报信息" :visible="updateVisible">
       <el-form label-width="100px" label-suffix="：" :model="dispose" class="form"  ref="fm">
         <el-form-item label="" prop="dsid">
           <el-input v-model="dispose.dsid" name="dsid" type="hidden"></el-input>
         </el-form-item>
-        <el-form-item label="被举报人名称" prop="bname">
+        <el-form-item label="被举报名称" prop="bname">
           <el-input v-model="dispose.bname" name="bname" type="readonly" ></el-input>
         </el-form-item>
         <el-form-item label="被举报类型" prop="types">
@@ -78,20 +79,21 @@ export default {
       dispose: {}
     }
   },
-  showDialogMTK: function (row) {
-    // 显示模态窗口
-    this.updateVisible = true
-    this.dispose = row
-  },
-  update: function () {
-    this.$axios.post('http://localhost:8888/sweet/dispose/update', this.$qs.stringify(this.dispose))
-      .then(response => {
-        if (response.data = 1) {
-          alert('修改成功')
-        } else {
-          alert('修改失败')
-        }
-      })
+  methods: {
+    showDialog: function (row) {
+      // 显示模态窗口
+      this.dispose = row
+    },
+    update: function () {
+      this.$axios.post('http://localhost:8888/sweet/dispose/update', this.$qs.stringify(this.dispose))
+        .then(response => {
+          if (response.data = 1) {
+            alert('修改成功')
+          } else {
+            alert('修改失败')
+          }
+        })
+    }
   }
 }
 </script>

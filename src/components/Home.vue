@@ -35,23 +35,15 @@
             </el-menu-item>
             <el-menu-item index="2-4">
               <i class="el-icon-camera"></i>
-              <span @click="">禁用用户</span>
+              <span @click="JYpeople">禁用用户</span>
             </el-menu-item>
             <el-menu-item index="2-5">
               <i class="el-icon-camera"></i>
               <span @click="life_message">客户工作生活</span>
             </el-menu-item>
-            <el-menu-item index="2-6">
+            <el-menu-item index="2-5">
               <i class="el-icon-camera"></i>
               <span @click="ShowDispose">举报记录</span>
-            </el-menu-item>
-            <el-menu-item index="2-7">
-              <i class="el-icon-camera"></i>
-              <span @click="attention">关注</span>
-            </el-menu-item>
-            <el-menu-item index="2-8">
-              <i class="el-icon-camera"></i>
-              <span @click="message">消息</span>
             </el-menu-item>
           </el-submenu>
           <el-submenu index="3">
@@ -118,16 +110,6 @@
             <el-menu-item index="7-2">
               <i class="el-icon-camera"></i>
               <span @click="">视频课堂</span>
-            </el-menu-item>
-          </el-submenu>
-          <el-submenu index="8">
-            <template slot="title">
-              <i class="el-icon-aim"></i>
-              <span>员工管理</span>
-            </template>
-            <el-menu-item index="8-1">
-              <i class="el-icon-camera"></i>
-              <span @click="emp">员工</span>
             </el-menu-item>
           </el-submenu>
         </el-menu>
@@ -258,30 +240,12 @@ export default {
           }
         })
     },
-    attention: function () {
-      this.$axios.post('http://localhost:8888/sweet/attention/findAll')
+    JYpeople: function () {
+      this.$axios.post('http://localhost:8888/sweet/basic_message/ShowBystate')
         .then(response => {
           console.log(response.data)
           if (response.data != null) {
-            this.$router.push({name: 'attention', query: {attention: response.data}})
-          }
-        })
-    },
-    emp: function () {
-      this.$axios.post('http://localhost:8888/sweet/emp/findAll')
-        .then(response => {
-          console.log(response.data)
-          if (response.data != null) {
-            this.$router.push({name: 'emp', query: {emp: response.data}})
-          }
-        })
-    },
-    message: function () {
-      this.$axios.post('http://localhost:8888/sweet/message/findAll')
-        .then(response => {
-          console.log(response.data)
-          if (response.data != null) {
-            this.$router.push({name: 'message', query: {message: response.data}})
+            this.$router.push({name: 'JYpeople', query: {JYpeople: response.data}})
           }
         })
     }
