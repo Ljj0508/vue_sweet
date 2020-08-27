@@ -31,11 +31,15 @@
             </el-menu-item>
             <el-menu-item index="2-3">
               <i class="el-icon-camera"></i>
-              <span @click="">择偶信息</span>
+              <span @click="choose_mate">择偶信息</span>
             </el-menu-item>
             <el-menu-item index="2-4">
               <i class="el-icon-camera"></i>
               <span @click="">禁用用户</span>
+            </el-menu-item>
+            <el-menu-item index="2-5">
+              <i class="el-icon-camera"></i>
+              <span @click="life_message">客户工作生活</span>
             </el-menu-item>
             <el-menu-item index="2-5">
               <i class="el-icon-camera"></i>
@@ -73,7 +77,7 @@
             </template>
             <el-menu-item index="5-1">
             <i class="el-icon-camera"></i>
-            <span @click="">会员套餐</span>
+            <span @click="combo">会员套餐</span>
           </el-menu-item>
             <el-menu-item index="5-2">
               <i class="el-icon-camera"></i>
@@ -92,6 +96,20 @@
             <el-menu-item index="6-2">
               <i class="el-icon-camera"></i>
               <span @click="">节目广告</span>
+            </el-menu-item>
+          </el-submenu>
+          <el-submenu index="7">
+            <template slot="title">
+              <i class="el-icon-aim"></i>
+              <span>脱单学堂</span>
+            </template>
+            <el-menu-item index="7-1">
+              <i class="el-icon-camera"></i>
+              <span @click="class_text">文字课堂</span>
+            </el-menu-item>
+            <el-menu-item index="7-2">
+              <i class="el-icon-camera"></i>
+              <span @click="">视频课堂</span>
             </el-menu-item>
           </el-submenu>
         </el-menu>
@@ -183,6 +201,42 @@ export default {
           console.log(response.data)
           if (response.data != null) {
             this.$router.push({name: 'dispose', query: {dispose: response.data}})
+          }
+        })
+    },
+    choose_mate: function () {
+      this.$axios.post('http://localhost:8888/sweet/choose_mate/findAll')
+        .then(response => {
+          console.log(response.data)
+          if (response.data != null) {
+            this.$router.push({name: 'choose_mate', query: {choose_mate: response.data}})
+          }
+        })
+    },
+    class_text: function () {
+      this.$axios.post('http://localhost:8888/sweet/class_text/findAll')
+        .then(response => {
+          console.log(response.data)
+          if (response.data != null) {
+            this.$router.push({name: 'class_text', query: {class_text: response.data}})
+          }
+        })
+    },
+    combo: function () {
+      this.$axios.post('http://localhost:8888/sweet/combo/findAll')
+        .then(response => {
+          console.log(response.data)
+          if (response.data != null) {
+            this.$router.push({name: 'combo', query: {combo: response.data}})
+          }
+        })
+    },
+    life_message: function () {
+      this.$axios.post('http://localhost:8888/sweet/life_message/findAll')
+        .then(response => {
+          console.log(response.data)
+          if (response.data != null) {
+            this.$router.push({name: 'life_message', query: {life_message: response.data}})
           }
         })
     }

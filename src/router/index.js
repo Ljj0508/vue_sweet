@@ -59,6 +59,26 @@ export default new Router({
           path: '/dispose',
           name: 'dispose',
           component: () => import('../components/dispose')
+        },
+        {
+          path: '/life_message',
+          name: 'life_message',
+          component: () => import('../components/life_message')
+        },
+        {
+          path: '/combo',
+          name: 'combo',
+          component: () => import('../components/combo')
+        },
+        {
+          path: '/class_text',
+          name: 'class_text',
+          component: () => import('../components/class_text')
+        },
+        {
+          path: '/choose_mate',
+          name: 'choose_mate',
+          component: () => import('../components/choose_mate')
         }
       ]
     }
