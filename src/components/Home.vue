@@ -35,7 +35,7 @@
             </el-menu-item>
             <el-menu-item index="2-4">
               <i class="el-icon-camera"></i>
-              <span @click="">禁用用户</span>
+              <span @click="JYShow">禁用用户</span>
             </el-menu-item>
             <el-menu-item index="2-5">
               <i class="el-icon-camera"></i>
@@ -352,6 +352,15 @@ export default {
           console.log(response.data)
           if (response.data != null) {
             this.$router.push({name: 'photo', query: {photo: response.data}})
+          }
+        })
+    },
+    JYShow: function () {
+      this.$axios.post('http://localhost:8888/sweet/basic_message/ShowBystate')
+        .then(response => {
+          console.log(response.data)
+          if (response.data != null) {
+            this.$router.push({name: 'JYpeople', query: {JYpeople: response.data}})
           }
         })
     }

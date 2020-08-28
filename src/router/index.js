@@ -124,6 +124,11 @@ export default new Router({
           path: '/photo',
           name: 'photo',
           component: () => import('../components/photo')
+        },
+        {
+          path: '/JYpeople',
+          name: 'JYpeople',
+          component: () => import('../components/JYpeople')
         }
       ]
     }
