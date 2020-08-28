@@ -39,31 +39,19 @@
             </el-menu-item>
             <el-menu-item index="2-5">
               <i class="el-icon-camera"></i>
-              <span @click="life_message">客户工作生活</span>
+              <span @click="life_message">工作生活</span>
             </el-menu-item>
             <el-menu-item index="2-6">
               <i class="el-icon-camera"></i>
-              <span @click="ShowDispose">举报记录</span>
+              <span @click="photo">客户相册</span>
             </el-menu-item>
             <el-menu-item index="2-7">
               <i class="el-icon-camera"></i>
-              <span @click="attention">关注</span>
-            </el-menu-item>
-            <el-menu-item index="2-9">
-              <i class="el-icon-camera"></i>
-              <span @click="profession_type">职业类型</span>
+              <span @click="attention">关注信息</span>
             </el-menu-item>
             <el-menu-item index="2-8">
               <i class="el-icon-camera"></i>
-              <span @click="message">消息</span>
-            </el-menu-item>
-            <el-menu-item index="2-10">
-              <i class="el-icon-camera"></i>
-              <span @click="details_message">客户详情信息</span>
-            </el-menu-item>
-            <el-menu-item index="2-11">
-              <i class="el-icon-camera"></i>
-              <span @click="photo">客户相册</span>
+              <span @click="details_message">详情信息</span>
             </el-menu-item>
           </el-submenu>
           <el-submenu index="3">
@@ -143,7 +131,27 @@
             </template>
             <el-menu-item index="8-1">
               <i class="el-icon-camera"></i>
-              <span @click="emp">员工</span>
+              <span @click="emp">员工信息</span>
+            </el-menu-item>
+          </el-submenu>
+          <el-submenu index="9">
+            <template slot="title">
+              <i class="el-icon-aim"></i>
+              <span>职业管理</span>
+            </template>
+            <el-menu-item index="9-1">
+              <i class="el-icon-camera"></i>
+              <span @click="profession_type">职业类型</span>
+            </el-menu-item>
+          </el-submenu>
+          <el-submenu index="10">
+            <template slot="title">
+              <i class="el-icon-aim"></i>
+              <span>举报管理</span>
+            </template>
+            <el-menu-item index="10-1">
+              <i class="el-icon-camera"></i>
+              <span @click="ShowDispose">举报记录</span>
             </el-menu-item>
           </el-submenu>
         </el-menu>

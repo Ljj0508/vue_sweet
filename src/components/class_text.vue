@@ -3,15 +3,14 @@
     <h1>员工管理  <el-button type="success" @click="showDialogadd">添加</el-button></h1>-->
     <!-- data:绑定数据  height:声明之后会固定表头-->
     <el-button round @click="showDialog2()">添加</el-button>
-    <el-table :data="this.$route.query.class_text" width="100%" height="550px" :stripe="true" border>
+    <el-table :data="this.$route.query.class_text" :stripe="true" border>
       <!-- prop显示绑定的数据的属性 -->
       <el-table-column prop="ctid" label="编号"></el-table-column>
       <el-table-column prop="ctname" label="课堂标题"></el-table-column>
       <el-table-column prop="info" label="内容介绍"></el-table-column>
-      <el-table-column label="操作" fixed="right" width="100px">
+      <el-table-column label="操作" fixed="right" width="130px">
         <template slot-scope="scope">
-
-          <el-button type="text" @click="del(scope.row.ctid)">删除</el-button>
+          <el-button type="danger" icon="el-icon-delete" @click="del(scope.row.ctid)" circle></el-button>
         </template>
       </el-table-column>
     </el-table>

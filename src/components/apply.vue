@@ -3,7 +3,7 @@
     <h1>员工管理  <el-button type="success" @click="showDialogadd">添加</el-button></h1>-->
     <!-- data:绑定数据  height:声明之后会固定表头-->
     <el-button round @click="showDialog2()">添加</el-button>
-    <el-table :data="this.$route.query.apply" width="100%" height="550px" :stripe="true" border>
+    <el-table :data="this.$route.query.apply" :stripe="true" border>
       <!-- prop显示绑定的数据的属性 -->
       <el-table-column prop="apid" label="编号"></el-table-column>
       <el-table-column prop="name" label="姓名"></el-table-column>
@@ -12,10 +12,10 @@
       <el-table-column prop="wechat" label="微信号"></el-table-column>
       <el-table-column prop="title" label="活动ID"></el-table-column>
       <el-table-column prop="bmname" label="客户ID"></el-table-column>
-      <el-table-column label="操作" fixed="right" width="100px">
+      <el-table-column label="操作" fixed="right" width="130px">
         <template slot-scope="scope">
-          <el-button type="text" @click="showDialog(scope.row)">修改</el-button>
-          <el-button type="text" @click="del(scope.row.apid)">删除</el-button>
+          <el-button type="primary" icon="el-icon-edit" @click="showDialog(scope.row)" circle></el-button>
+          <el-button type="danger" icon="el-icon-delete" @click="del(scope.row.apid)" circle></el-button>
         </template>
       </el-table-column>
     </el-table>

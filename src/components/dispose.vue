@@ -2,7 +2,7 @@
   <div><!--
     <h1>员工管理  <el-button type="success" @click="showDialogadd">添加</el-button></h1>-->
     <!-- data:绑定数据  height:声明之后会固定表头-->
-    <el-table :data="this.$route.query.dispose" width="100%" height="550px" :stripe="true" border>
+    <el-table :data="this.$route.query.dispose" :stripe="true" border>
       <!-- prop显示绑定的数据的属性 -->
       <el-table-column prop="dsid" label="编号"></el-table-column>
       <el-table-column prop="bname" label="被举报人名称"></el-table-column>
@@ -21,13 +21,11 @@
       </el-table-column>
       <el-table-column prop="dtime" label="处理时间"></el-table-column>
       <el-table-column prop="ename" label="处理人"></el-table-column>
-
-      <el-table-column label="操作" fixed="right" width="100px">
+      <el-table-column label="操作" fixed="right" width="130px">
         <template slot-scope="scope">
-          <!--<el-button type="text" @click="showDialog(scope.row)">修改</el-button>-->
-          <el-button type="primary" icon="el-icon-edit" @click="updateVisible=true;showDialog(scope.row)"></el-button>
-       </template>
-     </el-table-column>
+          <el-button type="primary" icon="el-icon-edit" @click="updateVisible=true;showDialog(scope.row)" circle></el-button>
+        </template>
+      </el-table-column>
    </el-table>
 
    <!--修改模态框-->
