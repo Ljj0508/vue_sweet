@@ -30,7 +30,7 @@
 
     <!--修改模态框-->
     <el-dialog width="40%" title="修改员工信息" :visible="updateVisible">
-      <el-form label-width="100px" label-suffix="：" :model="emp" class="form"  ref="fm" :rules="rules">
+      <el-form label-width="100px" label-suffix="：" :model="emp" class="form"  ref="fm">
         <el-form-item label="" prop="emid">
           <el-input v-model="emp.emid" name="emid" type="hidden"></el-input>
         </el-form-item>
@@ -67,7 +67,7 @@
 
     <!--添加模态框-->
     <el-dialog width="40%" title="添加员工信息" :visible="addVisible">
-      <el-form label-width="100px" label-suffix="：" :model="emp" class="form"  ref="fm" :rules="rules">
+      <el-form label-width="100px" label-suffix="：" :model="emp" class="form"  ref="fm">
         <el-form-item label="" prop="emid">
           <el-input v-model="emp.emid" name="emid" type="hidden"></el-input>
         </el-form-item>
@@ -100,7 +100,7 @@
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
-        <el-button type="primary" @click="add();updateVisible=false">添 加</el-button>
+        <el-button type="primary" @click="add();addVisible=false">添 加</el-button>
         <el-button type="success" @click="addVisible = false">取 消</el-button>
       </div>
     </el-dialog>
@@ -116,38 +116,7 @@ export default {
       state: '0',
       updateVisible: false,
       addVisible: false,
-      emp: {},
-      rules: {
-        ename: [
-          // require:进行校验,默认校验非空  message:提示信息  trigger:触发校验的事件
-          {required: true, message: '员工名称不能为空', trigger: 'blur'}
-          // 自定义校验规则
-
-        ],
-        epwd: [
-          // require:进行校验,默认校验非空  message:提示信息  trigger:触发校验的事件
-          {required: true, message: '密码不能为空', trigger: 'blur'}
-          // 自定义校验规则
-
-        ],
-        truename: [
-          // require:进行校验,默认校验非空  message:提示信息  trigger:触发校验的事件
-          {required: true, message: '真实姓名不能为空', trigger: 'blur'}
-          // 自定义校验规则
-
-        ],
-        phone: [
-          // require:进行校验,默认校验非空  message:提示信息  trigger:触发校验的事件
-          {required: true, message: '电话不能为空', trigger: 'blur'}
-          // 自定义校验规则
-
-        ],
-        address: [
-          // require:进行校验,默认校验非空  message:提示信息  trigger:触发校验的事件
-          {required: true, message: '住址不能为空', trigger: 'blur'}
-          // 自定义校验规则
-        ]
-      }
+      emp: {}
     }
   },
   methods: {
@@ -172,19 +141,14 @@ export default {
         })
     },
     add: function () {
-      this.$refs['fm'].validate(valid => {
-        if (valid == true) {
-          this.$axios.post('http://localhost:8888/sweet/Activity/add', this.$qs.stringify(this.activity))
-            .then(response => {
-              if (response.data = 1) {
-                alert('添加成功')
-              }
-            })
-        } else {
-          this.addVisible = true
-          alert('添加失败')
-        }
-      })
+      this.$axios.post('http://localhost:8888/sweet/emp/add', this.$qs.stringify(this.emp))
+        .then(response => {
+          if (response.data = 1) {
+            alert('添加成功')
+          } else {
+            alert('添加失败')
+          }
+        })
     }
   }
 }
