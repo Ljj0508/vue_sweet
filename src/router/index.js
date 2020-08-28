@@ -91,11 +91,6 @@ export default new Router({
           component: () => import('../components/emp')
         },
         {
-          path: '/message',
-          name: 'message',
-          component: () => import('../components/message')
-        },
-        {
           path: '/pay_fees',
           name: 'pay_fees',
           component: () => import('../components/pay_fees')
