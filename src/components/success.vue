@@ -10,13 +10,11 @@
       <el-table-column prop="girlname" label="女生名字"></el-table-column>
       <el-table-column prop="info" label="宣言"></el-table-column>
     </el-table>
-
-
     <!--添加员工-->
     <!--添加模态框-->
 
     <el-dialog width="40%" title="添加成功记录" :visible="addVisible">
-      <el-form label-width="100px" label-suffix="：" class="form"  ref="fm">
+      <el-form label-width="100px" label-suffix="：" :model="success" class="form"  ref="fm" :rules="rules">
         <el-form-item label="男生名字" prop="boyname">
           <el-input v-model="success.boyname" name="boyname"></el-input>
         </el-form-item>
@@ -42,30 +40,60 @@ export default {
     return {
       updateVisible: false,
       addVisible: false,
-      success: {}
+      success: {},
+      rules: {
+        boyname: [
+          // require:进行校验,默认校验非空  message:提示信息  trigger:触发校验的事件
+          {required: true, message: '名称不能为空', trigger: 'blur'},
+          // 自定义校验规则
+          {
+            trigger: ['blur'],
+            validator: function (rule, value, callback) {
+              if (value.indexOf('_') == -1) {
+                callback()
+              } else {
+                callback(new Error('名称不能包含_特殊字符'))
+              }
+            }
+          }
+        ],
+        girlname: [
+          // require:进行校验,默认校验非空  message:提示信息  trigger:触发校验的事件
+          {required: true, message: '名称不能为空', trigger: 'blur'},
+          // 自定义校验规则
+          {
+            trigger: ['blur'],
+            validator: function (rule, value, callback) {
+              if (value.indexOf('_') == -1) {
+                callback()
+              } else {
+                callback(new Error('名称不能包含_特殊字符'))
+              }
+            }
+          }
+        ]
+      }
     }
   },
   methods: {
-
-    showDialog: function (row) {
-      // 显示模态窗口
-      this.updateVisible = true
-      this.success = row
-    },
     showDialog2: function () {
       // 显示模态窗口
       this.addVisible = true
       this.success = {}
     },
     add: function () {
-      this.$axios.post('http://localhost:8888/sweet/Success/add', this.$qs.stringify(this.success))
-        .then(response => {
-          if (response.data = 1) {
-            alert('添加成功')
-          } else {
-            alert('添加失败')
-          }
-        })
+      this.$refs['fm'].validate(valid => {
+        if (valid == true) {
+          this.$axios.post('http://localhost:8888/sweet/Success/add', this.$qs.stringify(this.success))
+            .then(response => {
+              if (response.data = 1) {
+                alert('添加成功')
+              }
+            })
+        } else {
+          alert('添加失败')
+        }
+      })
     }
   }
 }

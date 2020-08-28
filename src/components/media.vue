@@ -17,7 +17,7 @@
     </el-table>
 
     <el-dialog width="40%" title="添加节目" :visible="addVisible">
-      <el-form label-width="100px" label-suffix="：" class="form"  ref="fm">
+      <el-form label-width="100px" label-suffix="：" :model="media" class="form"  ref="fm" :rules="rules">
         <el-form-item label="节目名称" prop="name">
           <el-input v-model="media.name" name="name"></el-input>
         </el-form-item>
@@ -32,7 +32,7 @@
     </el-dialog>
 
     <el-dialog width="40%" title="修改节目" :visible="updateVisible">
-      <el-form label-width="100px" label-suffix="：" class="form"  ref="fm">
+      <el-form label-width="100px" label-suffix="：" :model="media" class="form"  ref="fm" :rules="rules">
         <el-form-item label="节目名称" prop="name">
           <el-input v-model="media.name" name="name"></el-input>
         </el-form-item>
@@ -56,7 +56,29 @@ export default {
     return {
       updateVisible: false,
       addVisible: false,
-      media: {}
+      media: {},
+      rules: {
+        name: [
+          // require:进行校验,默认校验非空  message:提示信息  trigger:触发校验的事件
+          {required: true, message: '节目名称不能为空', trigger: 'blur'},
+          // 自定义校验规则
+          {
+            trigger: ['blur'],
+            validator: function (rule, value, callback) {
+              if (value.indexOf('_') == -1) {
+                callback()
+              } else {
+                callback(new Error('节目名称不能包含_特殊字符'))
+              }
+            }
+          }
+        ],
+        pic: [
+          // require:进行校验,默认校验非空  message:提示信息  trigger:触发校验的事件
+          {required: true, message: '节目图片不能为空', trigger: 'blur'}
+        ]
+        // 自定义校验规则]
+      }
     }
   },
   methods: {
@@ -81,24 +103,33 @@ export default {
       this.media = {}
     },
     update: function () {
-      this.$axios.post('http://localhost:8888/sweet/media/update', this.$qs.stringify(this.media))
-        .then(response => {
-          if (response.data = 1) {
-            alert('修改成功')
-          } else {
-            alert('修改失败')
-          }
-        })
+      this.$refs['fm'].validate(valid => {
+        alert(valid)
+        if (valid == true) {
+          this.$axios.post('http://localhost:8888/sweet/media/update', this.$qs.stringify(this.media))
+            .then(response => {
+              if (response.data = 1) {
+                alert('修改成功')
+              }
+            })
+        } else {
+          alert('修改失败')
+        }
+      })
     },
     add: function () {
-      this.$axios.post('http://localhost:8888/sweet/media/add', this.$qs.stringify(this.media))
-        .then(response => {
-          if (response.data = 1) {
-            alert('添加成功')
-          } else {
-            alert('添加失败')
-          }
-        })
+      this.$refs['fm'].validate(valid => {
+        if (valid == true) {
+          this.$axios.post('http://localhost:8888/sweet/media/add', this.$qs.stringify(this.media))
+            .then(response => {
+              if (response.data = 1) {
+                alert('添加成功')
+              }
+            })
+        } else {
+          alert('添加失败')
+        }
+      })
     }
   }
 }
