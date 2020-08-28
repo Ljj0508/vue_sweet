@@ -125,7 +125,6 @@ export default new Router({
           name: 'photo',
           component: () => import('../components/photo')
         },
-        //禁用用户
         {
           path: '/JYpeople',
           name: 'JYpeople',

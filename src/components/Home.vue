@@ -1,7 +1,6 @@
 <template>
   <div id="con">
     <h1>相亲网后台管理系统</h1>
-    <!--头部-->
     <div id="head">
       <el-header>
         <el-dropdown style="float: right" @command="handlerCommand">
