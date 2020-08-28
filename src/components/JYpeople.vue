@@ -78,7 +78,7 @@
           <el-input v-model="JYpeople.phone" name="phone"></el-input>
         </el-form-item>
         <el-form-item label="密码" prop="pwd">
-          <el-input v-model="JYpeople.pwd" name="pwd"></el-input>
+          <el-input v-mod-el="JYpeople.pwd" name="pwd"></el-input>
         </el-form-item>
         <el-form-item label="工作地区" prop="address">
           <el-input v-model="JYpeople.address" name="address"></el-input>

@@ -35,15 +35,35 @@
             </el-menu-item>
             <el-menu-item index="2-4">
               <i class="el-icon-camera"></i>
-              <span @click="JYpeople">禁用用户</span>
+              <span @click="">禁用用户</span>
             </el-menu-item>
             <el-menu-item index="2-5">
               <i class="el-icon-camera"></i>
               <span @click="life_message">客户工作生活</span>
             </el-menu-item>
-            <el-menu-item index="2-5">
+            <el-menu-item index="2-6">
               <i class="el-icon-camera"></i>
               <span @click="ShowDispose">举报记录</span>
+            </el-menu-item>
+            <el-menu-item index="2-7">
+              <i class="el-icon-camera"></i>
+              <span @click="attention">关注</span>
+            </el-menu-item>
+            <el-menu-item index="2-9">
+              <i class="el-icon-camera"></i>
+              <span @click="profession_type">职业类型</span>
+            </el-menu-item>
+            <el-menu-item index="2-8">
+              <i class="el-icon-camera"></i>
+              <span @click="message">消息</span>
+            </el-menu-item>
+            <el-menu-item index="2-10">
+              <i class="el-icon-camera"></i>
+              <span @click="details_message">客户详情信息</span>
+            </el-menu-item>
+            <el-menu-item index="2-11">
+              <i class="el-icon-camera"></i>
+              <span @click="photo">客户相册</span>
             </el-menu-item>
           </el-submenu>
           <el-submenu index="3">
@@ -83,6 +103,10 @@
               <i class="el-icon-camera"></i>
               <span @click="TOPShow">置顶套餐</span>
             </el-menu-item>
+            <el-menu-item index="5-2">
+              <i class="el-icon-camera"></i>
+              <span @click="pay_fees">缴费记录</span>
+            </el-menu-item>
           </el-submenu>
           <el-submenu index="6">
             <template slot="title">
@@ -95,7 +119,7 @@
             </el-menu-item>
             <el-menu-item index="6-2">
               <i class="el-icon-camera"></i>
-              <span @click="">节目广告</span>
+              <span @click="media">节目广告</span>
             </el-menu-item>
           </el-submenu>
           <el-submenu index="7">
@@ -109,7 +133,17 @@
             </el-menu-item>
             <el-menu-item index="7-2">
               <i class="el-icon-camera"></i>
-              <span @click="">视频课堂</span>
+              <span @click="class_vido">视频课堂</span>
+            </el-menu-item>
+          </el-submenu>
+          <el-submenu index="8">
+            <template slot="title">
+              <i class="el-icon-aim"></i>
+              <span>员工管理</span>
+            </template>
+            <el-menu-item index="8-1">
+              <i class="el-icon-camera"></i>
+              <span @click="emp">员工</span>
             </el-menu-item>
           </el-submenu>
         </el-menu>
@@ -240,12 +274,84 @@ export default {
           }
         })
     },
-    JYpeople: function () {
-      this.$axios.post('http://localhost:8888/sweet/basic_message/ShowBystate')
+    attention: function () {
+      this.$axios.post('http://localhost:8888/sweet/attention/findAll')
         .then(response => {
           console.log(response.data)
           if (response.data != null) {
-            this.$router.push({name: 'JYpeople', query: {JYpeople: response.data}})
+            this.$router.push({name: 'attention', query: {attention: response.data}})
+          }
+        })
+    },
+    emp: function () {
+      this.$axios.post('http://localhost:8888/sweet/emp/findAll')
+        .then(response => {
+          console.log(response.data)
+          if (response.data != null) {
+            this.$router.push({name: 'emp', query: {emp: response.data}})
+          }
+        })
+    },
+    message: function () {
+      this.$axios.post('http://localhost:8888/sweet/message/findAll')
+        .then(response => {
+          console.log(response.data)
+          if (response.data != null) {
+            this.$router.push({name: 'message', query: {message: response.data}})
+          }
+        })
+    },
+    pay_fees: function () {
+      this.$axios.post('http://localhost:8888/sweet/pay_fees/findAll')
+        .then(response => {
+          console.log(response.data)
+          if (response.data != null) {
+            this.$router.push({name: 'pay_fees', query: {pay_fees: response.data}})
+          }
+        })
+    },
+    profession_type: function () {
+      this.$axios.post('http://localhost:8888/sweet/profession_type/findAll')
+        .then(response => {
+          console.log(response.data)
+          if (response.data != null) {
+            this.$router.push({name: 'profession_type', query: {profession_type: response.data}})
+          }
+        })
+    },
+    details_message: function () {
+      this.$axios.post('http://localhost:8888/sweet/details_message/findAll')
+        .then(response => {
+          console.log(response.data)
+          if (response.data != null) {
+            this.$router.push({name: 'details_message', query: {details_message: response.data}})
+          }
+        })
+    },
+    class_vido: function () {
+      this.$axios.post('http://localhost:8888/sweet/class_vido/findAll')
+        .then(response => {
+          console.log(response.data)
+          if (response.data != null) {
+            this.$router.push({name: 'class_vido', query: {class_vido: response.data}})
+          }
+        })
+    },
+    media: function () {
+      this.$axios.post('http://localhost:8888/sweet/media/findAll')
+        .then(response => {
+          console.log(response.data)
+          if (response.data != null) {
+            this.$router.push({name: 'media', query: {media: response.data}})
+          }
+        })
+    },
+    photo: function () {
+      this.$axios.post('http://localhost:8888/sweet/photo/findAll')
+        .then(response => {
+          console.log(response.data)
+          if (response.data != null) {
+            this.$router.push({name: 'photo', query: {photo: response.data}})
           }
         })
     }

@@ -81,9 +81,49 @@ export default new Router({
           component: () => import('../components/choose_mate')
         },
         {
-          path: '/JYpeople',
-          name: 'JYpeople',
-          component: () => import('../components/JYpeople')
+          path: '/attention',
+          name: 'attention',
+          component: () => import('../components/attention')
+        },
+        {
+          path: '/emp',
+          name: 'emp',
+          component: () => import('../components/emp')
+        },
+        {
+          path: '/message',
+          name: 'message',
+          component: () => import('../components/message')
+        },
+        {
+          path: '/pay_fees',
+          name: 'pay_fees',
+          component: () => import('../components/pay_fees')
+        },
+        {
+          path: '/profession_type',
+          name: 'profession_type',
+          component: () => import('../components/profession_type')
+        },
+        {
+          path: '/details_message',
+          name: 'details_message',
+          component: () => import('../components/details_message')
+        },
+        {
+          path: '/class_vido',
+          name: 'class_vido',
+          component: () => import('../components/class_vido')
+        },
+        {
+          path: '/media',
+          name: 'media',
+          component: () => import('../components/media')
+        },
+        {
+          path: '/photo',
+          name: 'photo',
+          component: () => import('../components/photo')
         }
       ]
     }

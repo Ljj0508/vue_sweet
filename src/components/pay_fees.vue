@@ -3,24 +3,25 @@
     <h1>员工管理  <el-button type="success" @click="showDialogadd">添加</el-button></h1>-->
     <!-- data:绑定数据  height:声明之后会固定表头-->
 
-    <el-table :data="this.$route.query.message" width="100%" height="550px" :stripe="true" border>
+    <el-table :data="this.$route.query.pay_fees" width="100%" height="550px" :stripe="true" border>
       <!-- prop显示绑定的数据的属性 -->
-      <el-table-column prop="meid" label="编号"></el-table-column>
-      <el-table-column prop="bname" label="发消息人"></el-table-column>
-      <el-table-column prop="bmname" label="收消息人"></el-table-column>
-      <el-table-column prop="context" label="消息内容"></el-table-column>
+      <el-table-column prop="pfid" label="编号"></el-table-column>
+      <el-table-column prop="peoject" label="项目"></el-table-column>
+      <el-table-column prop="money" label="金额"></el-table-column>
+      <el-table-column prop="paytime" label="缴费时长"></el-table-column>
+      <el-table-column prop="ptime" label="时长"></el-table-column>
+      <el-table-column prop="bmname" label="客户名称"></el-table-column>
     </el-table>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'message',
+  name: 'pay_fees',
   data () {
     return {
-      updateVisible: false,
-      a: false,
-      message: {}
+
+      pay_fees: {}
     }
   }
 }
