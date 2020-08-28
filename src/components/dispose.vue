@@ -35,22 +35,28 @@
           <el-input v-model="dispose.dsid" name="dsid" type="hidden"></el-input>
         </el-form-item>
         <el-form-item label="被举报名称" prop="bname">
-          <el-input v-model="dispose.bname" name="bname" type="readonly" ></el-input>
+          <el-input v-model="dispose.bname" name="bname" readonly="true" ></el-input>
         </el-form-item>
         <el-form-item label="被举报类型" prop="types">
-          <el-input v-model="dispose.types" name="types"></el-input>
+          <el-input v-model="dispose.types" name="types"  readonly="true" ></el-input>
         </el-form-item>
         <el-form-item label="被举报理由" prop="reason">
-          <el-input v-model="dispose.reason" name="reason"></el-input>
+          <el-input v-model="dispose.reason" name="reason"  readonly="true" ></el-input>
         </el-form-item>
         <el-form-item label="举报人名称" prop="bmname">
-          <el-input v-model="dispose.bmname" name="bmname"></el-input>
+          <el-input v-model="dispose.bmname" name="bmname"  readonly="true" ></el-input>
         </el-form-item>
         <el-form-item label="处理状态" prop="state">
-          <el-input v-model="dispose.state" name="state"></el-input>
+          <template>
+            <el-radio v-model="dispose.state"  name="state" label="0">已处理</el-radio>
+            <el-radio v-model="dispose.state" name="state"  label="1">未处理</el-radio>
+          </template>
         </el-form-item>
         <el-form-item label="处理方式" prop="way">
-          <el-input v-model="dispose.way" name="way"></el-input>
+          <template>
+            <el-radio v-model="dispose.way"  name="way" label="0">忽略</el-radio>
+            <el-radio v-model="dispose.way" name="way"  label="1">警告</el-radio>
+          </template>
         </el-form-item>
         <el-form-item label="处理时间" prop="dtime">
           <el-input v-model="dispose.dtime" name="dtime"></el-input>
@@ -73,6 +79,8 @@ export default {
   name: 'dispose',
   data () {
     return {
+      way: '0',
+      state: '0',
       updateVisible: false,
       dispose: {}
     }
