@@ -98,8 +98,8 @@
         </el-form-item>
         <el-form-item label="状态" prop="state">
           <template>
-            <el-radio v-model="basic_message.state" label="0">备选项</el-radio>
-            <el-radio v-model="basic_message.state" label="1">备选项</el-radio>
+            <el-radio v-model="basic_message.state" label="0">正常</el-radio>
+            <el-radio v-model="basic_message.state" label="1">禁用</el-radio>
           </template>
         </el-form-item>
       </el-form>

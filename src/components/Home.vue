@@ -7,7 +7,7 @@
           <span class="a">欢迎{{$route.params.loginUser}}</span>
           <i class="el-icon-arrow-down"></i>
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item command="personal">个人信息</el-dropdown-item>
+            <el-dropdown-item command="personal" @click="ShowByID">个人信息</el-dropdown-item>
             <el-dropdown-item command="Logout">退出</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
