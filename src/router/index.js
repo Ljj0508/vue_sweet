@@ -124,6 +124,11 @@ export default new Router({
           path: '/JYpeople',
           name: 'JYpeople',
           component: () => import('../components/JYpeople')
+        },
+        {
+          path: '/jyEmp',
+          name: 'jyEmp',
+          component: () => import('../components/jyEmp')
         }
       ]
     }

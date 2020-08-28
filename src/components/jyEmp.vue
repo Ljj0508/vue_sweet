@@ -2,7 +2,6 @@
   <div><!--
     <h1>员工管理  <el-button type="success" @click="showDialogadd">添加</el-button></h1>-->
     <!-- data:绑定数据  height:声明之后会固定表头-->
-    <el-button round @click="showDialog2()">添加</el-button>
     <el-table :data="this.$route.query.emp" :stripe="true" border>
       <!-- prop显示绑定的数据的属性 -->
       <el-table-column prop="emid" label="编号"></el-table-column>
@@ -65,51 +64,12 @@
       </div>
     </el-dialog>
 
-    <!--添加模态框-->
-    <el-dialog width="40%" title="添加员工信息" :visible="addVisible">
-      <el-form label-width="100px" label-suffix="：" :model="emp" class="form"  ref="fm">
-        <el-form-item label="" prop="emid">
-          <el-input v-model="emp.emid" name="emid" type="hidden"></el-input>
-        </el-form-item>
-        <el-form-item label="名称" prop="ename">
-          <el-input v-model="emp.ename" name="ename"></el-input>
-        </el-form-item>
-        <el-form-item label="密码" prop="epwd">
-          <el-input v-model="emp.epwd" name="epwd"></el-input>
-        </el-form-item>
-        <el-form-item label="真实姓名" prop="truename">
-          <el-input v-model="emp.truename" name="truename"></el-input>
-        </el-form-item>
-        <el-form-item label="性别" prop="sex">
-          <template>
-            <el-radio v-model="emp.sex" name="sex" label="0">女</el-radio>
-            <el-radio v-model="emp.sex" name="sex" label="1">男</el-radio>
-          </template>
-        </el-form-item>
-        <el-form-item label="手机号" prop="phone">
-          <el-input v-model="emp.phone" name="phone"></el-input>
-        </el-form-item>
-        <el-form-item label="住址" prop="address">
-          <el-input v-model="emp.address" name="address"></el-input>
-        </el-form-item>
-        <el-form-item label="账号状态" prop="state">
-          <template>
-            <el-radio v-model="emp.state" name="state" label="0">正常</el-radio>
-            <el-radio v-model="emp.state" name="state" label="1">禁用</el-radio>
-          </template>
-        </el-form-item>
-      </el-form>
-      <div slot="footer" class="dialog-footer">
-        <el-button type="primary" @click="add();updateVisible=false">添 加</el-button>
-        <el-button type="success" @click="addVisible = false">取 消</el-button>
-      </div>
-    </el-dialog>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'emp',
+  name: 'jyEmp',
   data () {
     return {
       sex: '0',
@@ -121,12 +81,12 @@ export default {
   },
   methods: {
     showDialog: function (row) {
-    // 显示模态窗口
+      // 显示模态窗口
       this.updateVisible = true
       this.emp = row
     },
     showDialog2: function () {
-    // 显示模态窗口
+      // 显示模态窗口
       this.addVisible = true
       this.emp = {}
     },
@@ -137,16 +97,6 @@ export default {
             alert('修改成功')
           } else {
             alert('修改失败')
-          }
-        })
-    },
-    add: function () {
-      this.$axios.post('http://localhost:8888/sweet/Activity/add', this.$qs.stringify(this.activity))
-        .then(response => {
-          if (response.data = 1) {
-            alert('添加成功')
-          } else {
-            alert('添加失败')
           }
         })
     }

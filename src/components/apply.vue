@@ -2,7 +2,7 @@
   <div><!--
     <h1>员工管理  <el-button type="success" @click="showDialogadd">添加</el-button></h1>-->
     <!-- data:绑定数据  height:声明之后会固定表头-->
-    <el-button round @click="showDialog2()">添加</el-button>
+    <!--<el-button round @click="showDialog2()">添加</el-button>-->
     <el-table :data="this.$route.query.apply" :stripe="true" border>
       <!-- prop显示绑定的数据的属性 -->
       <el-table-column prop="apid" label="编号"></el-table-column>
@@ -12,12 +12,12 @@
       <el-table-column prop="wechat" label="微信号"></el-table-column>
       <el-table-column prop="title" label="活动ID"></el-table-column>
       <el-table-column prop="bmname" label="客户ID"></el-table-column>
-      <el-table-column label="操作" fixed="right" width="130px">
-        <template slot-scope="scope">
-          <el-button type="primary" icon="el-icon-edit" @click="showDialog(scope.row)" circle></el-button>
-          <el-button type="danger" icon="el-icon-delete" @click="del(scope.row.apid)" circle></el-button>
-        </template>
-      </el-table-column>
+      <!--<el-table-column label="操作" fixed="right" width="130px">-->
+        <!--<template slot-scope="scope">-->
+          <!--<el-button type="primary" icon="el-icon-edit" @click="showDialog(scope.row)" circle></el-button>-->
+          <!--<el-button type="danger" icon="el-icon-delete" @click="del(scope.row.apid)" circle></el-button>-->
+        <!--</template>-->
+      <!--</el-table-column>-->
     </el-table>
 
     <!--修改模态框-->
@@ -27,22 +27,22 @@
           <el-input v-model="apply.apid" name="apid" type="hidden"></el-input>
         </el-form-item>
         <el-form-item label="姓名" prop="name">
-          <el-input v-model="apply.name" name="name"></el-input>
+          <el-input v-model="apply.name" name="name" readonly="true"></el-input>
         </el-form-item>
         <el-form-item label="参与人数" prop="part">
-          <el-input v-model="apply.part" name="part"></el-input>
+          <el-input v-model="apply.part" name="part" readonly="true"></el-input>
         </el-form-item>
         <el-form-item label="手机号" prop="phone">
-          <el-input v-model="apply.phone" name="phone"></el-input>
+          <el-input v-model="apply.phone" name="phone" readonly="true"></el-input>
         </el-form-item>
         <el-form-item label="微信号" prop="wechat">
-          <el-input v-model="apply.wechat" name="wechat"></el-input>
+          <el-input v-model="apply.wechat" name="wechat" readonly="true"></el-input>
         </el-form-item>
         <el-form-item label="活动信息" prop="title">
-          <el-input v-model="apply.title" name="title"></el-input>
+          <el-input v-model="apply.title" name="title" readonly="true"></el-input>
         </el-form-item>
         <el-form-item label="客户信息" prop="bmid">
-          <el-input v-model="apply.bmname" name="bmname"></el-input>
+          <el-input v-model="apply.bmname" name="bmname" readonly="true"></el-input>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">

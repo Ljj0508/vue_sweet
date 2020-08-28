@@ -35,7 +35,7 @@
             </el-menu-item>
             <el-menu-item index="2-4">
               <i class="el-icon-camera"></i>
-              <span @click="">禁用用户</span>
+              <span @click="JYShow">禁用用户</span>
             </el-menu-item>
             <el-menu-item index="2-5">
               <i class="el-icon-camera"></i>
@@ -132,6 +132,10 @@
             <el-menu-item index="8-1">
               <i class="el-icon-camera"></i>
               <span @click="emp">员工信息</span>
+            </el-menu-item>
+            <el-menu-item index="8-2">
+              <i class="el-icon-camera"></i>
+              <span @click="JYEmp">离职员工</span>
             </el-menu-item>
           </el-submenu>
           <el-submenu index="9">
@@ -369,6 +373,15 @@ export default {
           console.log(response.data)
           if (response.data != null) {
             this.$router.push({name: 'JYpeople', query: {JYpeople: response.data}})
+          }
+        })
+    },
+    JYEmp: function () {
+      this.$axios.post('http://localhost:8888/sweet/emp/findBYState')
+        .then(response => {
+          console.log(response.data)
+          if (response.data != null) {
+            this.$router.push({name: 'jyEmp', query: {emp: response.data}})
           }
         })
     }

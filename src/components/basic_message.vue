@@ -58,48 +58,45 @@
           <el-input v-model="basic_message.bmid" name="bmid" type="hidden"></el-input>
         </el-form-item>
         <el-form-item label="账号Id" prop="number">
-          <el-input v-model="basic_message.number" name="number"></el-input>
+          <el-input v-model="basic_message.number" name="number" readonly="true"></el-input>
         </el-form-item>
         <el-form-item label="昵称" prop="bmname">
-          <el-input v-model="basic_message.bmname" name="bmname"></el-input>
+          <el-input v-model="basic_message.bmname" name="bmname" readonly="true"></el-input>
         </el-form-item>
         <el-form-item label="年龄" prop="age">
-          <el-input v-model="basic_message.age" name="age"></el-input>
+          <el-input v-model="basic_message.age" name="age" readonly="true"></el-input>
         </el-form-item>
         <el-form-item label="身高" prop="height">
-          <el-input v-model="basic_message.height" name="height"></el-input>
+          <el-input v-model="basic_message.height" name="height" readonly="true"></el-input>
         </el-form-item>
         <el-form-item label="体重" prop="weight">
-          <el-input v-model="basic_message.weight" name="weight"></el-input>
+          <el-input v-model="basic_message.weight" name="weight" readonly="true"></el-input>
         </el-form-item>
         <el-form-item label="性别" prop="sex">
-          <el-input v-model="basic_message.sex" name="sex"></el-input>
+          <el-input v-model="basic_message.sex" name="sex" readonly="true"></el-input>
         </el-form-item>
         <el-form-item label="手机号" prop="phone">
-          <el-input v-model="basic_message.phone" name="phone"></el-input>
+          <el-input v-model="basic_message.phone" name="phone" readonly="true"></el-input>
         </el-form-item>
         <el-form-item label="密码" prop="pwd">
-          <el-input v-model="basic_message.pwd" name="pwd"></el-input>
+          <el-input v-model="basic_message.pwd" name="pwd" readonly="true"></el-input>
         </el-form-item>
         <el-form-item label="工作地区" prop="address">
-          <el-input v-model="basic_message.address" name="address"></el-input>
+          <el-input v-model="basic_message.address" name="address" readonly="true"></el-input>
         </el-form-item>
         <el-form-item label="出生年月" prop="birthday">
-          <el-input v-model="basic_message.birthday" name="birthday"></el-input>
+          <el-input v-model="basic_message.birthday" name="birthday" readonly="true"></el-input>
         </el-form-item>
         <el-form-item label="婚姻状况" prop="marriage">
-          <el-input v-model="basic_message.marriage" name="marriage"></el-input>
+          <el-input v-model="basic_message.marriage" name="marriage" readonly="true"></el-input>
         </el-form-item>
         <el-form-item label="会员" prop="vip">
-          <el-input v-model="basic_message.vip" name="vip" disabled="true"></el-input>
-        </el-form-item>
-        <el-form-item label="状态" prop="state">
-          <el-input v-model="basic_message.state" name="state"></el-input>
+          <el-input v-model="basic_message.vip" name="vip" readonly="true"></el-input>
         </el-form-item>
         <el-form-item label="状态" prop="state">
           <template>
-            <el-radio v-model="basic_message.state" label="0">正常</el-radio>
-            <el-radio v-model="basic_message.state" label="1">禁用</el-radio>
+            <el-radio v-model="basic_message.state"  name="state" label="0">正常</el-radio>
+            <el-radio v-model="basic_message.state" name="state"  label="1">禁用</el-radio>
           </template>
         </el-form-item>
       </el-form>

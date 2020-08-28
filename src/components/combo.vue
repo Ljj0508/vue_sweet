@@ -28,19 +28,23 @@
           <el-input v-model="combo.coid" name="coid" type="hidden"></el-input>
         </el-form-item>
         <el-form-item label="套餐名称" prop="coname">
-          <el-input v-model="combo.coname" name="coname"></el-input>
+          <el-input v-model="combo.coname" name="coname" readonly="true"></el-input>
         </el-form-item>
         <el-form-item label="套餐价格" prop="price">
-          <el-input v-model="combo.price" name="price"></el-input>
+          <el-input v-model="combo.price" name="price" readonly="true"></el-input>
         </el-form-item>
         <el-form-item label="日均" prop="days">
-          <el-input v-model="combo.days" name="days"></el-input>
+          <el-input v-model="combo.days" name="days" readonly="true"></el-input>
         </el-form-item>
         <el-form-item label="会员权益" prop="benefit">
-          <el-input v-model="combo.benefit" name="benefit"></el-input>
+          <el-input v-model="combo.benefit" name="benefit" readonly="true"></el-input>
         </el-form-item>
+
         <el-form-item label="状态" prop="state">
-          <el-input v-model="combo.state" name="state"></el-input>
+          <template>
+            <el-radio v-model="combo.state" name="state" label="0">正常</el-radio>
+            <el-radio v-model="combo.state" name="state" label="1">已售完</el-radio>
+          </template>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -58,6 +62,7 @@ export default {
   name: 'combo',
   data () {
     return {
+      state: 0,
       updateVisible: false,
       addVisible: false,
       combo: {}

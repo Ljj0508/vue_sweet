@@ -5,7 +5,7 @@
     <el-table :data="this.$route.query.JYpeople" :stripe="true" border>
       <!-- prop显示绑定的数据的属性 -->
       <el-table-column prop="bmid" label="编号"></el-table-column>
-      <el-table-column prop="number" label="账号ID"></el-table-column>
+      <el-table-column prop="number" label="账号ID" width="130px"></el-table-column>
       <el-table-column prop="bmname" label="昵称"></el-table-column>
       <el-table-column prop="age" label="年龄"></el-table-column>
       <!-- <el-table-column prop="height" label="身高"></el-table-column>
@@ -20,20 +20,20 @@
       <el-table-column prop="pwd" label="密码"></el-table-column>
       <!--<el-table-column prop="address" label="工作地区"></el-table-column>
       <el-table-column prop="birthday" label="出生年月"></el-table-column>-->
-      <el-table-column prop="marriage" label="婚姻状况">
-       <template slot-scope="marriage">
-          <div v-if="marriage==0">
-          <div>未婚</div>
-          </div>
-          <div v-if="marriage==1">
-          <div>离婚</div>
-          </div>
-          <div v-if="marriage==2">
-          <div>丧偶</div>
-          </div>
-       </template>
-      </el-table-column>
-      <!--<el-table-column prop="marriage" label="婚姻状况"></el-table-column>-->
+      <!--<el-table-column prop="marriage" label="婚姻状况">-->
+       <!--<template slot-scope="marriage">-->
+          <!--<div v-if="marriage==0">-->
+          <!--<div>未婚</div>-->
+          <!--</div>-->
+          <!--<div v-if="marriage==1">-->
+          <!--<div>离婚</div>-->
+          <!--</div>-->
+          <!--<div v-if="marriage==2">-->
+          <!--<div>丧偶</div>-->
+          <!--</div>-->
+       <!--</template>-->
+      <!--</el-table-column>-->
+      <el-table-column prop="marriage" label="婚姻状况"></el-table-column>
       <el-table-column prop="vip" label="会员">
         <template slot-scope="JYpeople">
           {{JYpeople.row.vip==0?"会员":"非会员"}}
@@ -57,48 +57,45 @@
           <el-input v-model="JYpeople.bmid" name="bmid" type="hidden"></el-input>
         </el-form-item>
         <el-form-item label="账号Id" prop="number">
-          <el-input v-model="JYpeople.number" name="number"></el-input>
+          <el-input v-model="JYpeople.number" name="number" readonly="true"></el-input>
         </el-form-item>
         <el-form-item label="昵称" prop="bmname">
-          <el-input v-model="JYpeople.bmname" name="bmname"></el-input>
+          <el-input v-model="JYpeople.bmname" name="bmname" readonly="true"></el-input>
         </el-form-item>
         <el-form-item label="年龄" prop="age">
-          <el-input v-model="JYpeople.age" name="age"></el-input>
+          <el-input v-model="JYpeople.age" name="age" readonly="true"></el-input>
         </el-form-item>
         <el-form-item label="身高" prop="height">
-          <el-input v-model="JYpeople.height" name="height"></el-input>
+          <el-input v-model="JYpeople.height" name="height" readonly="true"></el-input>
         </el-form-item>
         <el-form-item label="体重" prop="weight">
-          <el-input v-model="JYpeople.weight" name="weight"></el-input>
+          <el-input v-model="JYpeople.weight" name="weight" readonly="true"></el-input>
         </el-form-item>
         <el-form-item label="性别" prop="sex">
-          <el-input v-model="JYpeople.sex" name="sex"></el-input>
+          <el-input v-model="JYpeople.sex" name="sex" readonly="true"></el-input>
         </el-form-item>
         <el-form-item label="手机号" prop="phone">
-          <el-input v-model="JYpeople.phone" name="phone"></el-input>
+          <el-input v-model="JYpeople.phone" name="phone" readonly="true"></el-input>
         </el-form-item>
         <el-form-item label="密码" prop="pwd">
-          <el-input v-mod-el="JYpeople.pwd" name="pwd"></el-input>
+          <el-input v-model="JYpeople.pwd" name="pwd" readonly="true"></el-input>
         </el-form-item>
         <el-form-item label="工作地区" prop="address">
-          <el-input v-model="JYpeople.address" name="address"></el-input>
+          <el-input v-model="JYpeople.address" name="address" readonly="true"></el-input>
         </el-form-item>
         <el-form-item label="出生年月" prop="birthday">
-          <el-input v-model="JYpeople.birthday" name="birthday"></el-input>
+          <el-input v-model="JYpeople.birthday" name="birthday" readonly="true"></el-input>
         </el-form-item>
         <el-form-item label="婚姻状况" prop="marriage">
-          <el-input v-model="JYpeople.marriage" name="marriage"></el-input>
+          <el-input v-model="JYpeople.marriage" name="marriage" readonly="true"></el-input>
         </el-form-item>
         <el-form-item label="会员" prop="vip">
-          <el-input v-model="JYpeople.vip" name="vip" disabled="true"></el-input>
-        </el-form-item>
-        <el-form-item label="状态" prop="state">
-          <el-input v-model="JYpeople.state" name="state"></el-input>
+          <el-input v-model="JYpeople.vip" name="vip"  readonly="true"></el-input>
         </el-form-item>
         <el-form-item label="状态" prop="state">
           <template>
-            <el-radio v-model="JYpeople.state" label="0">备选项</el-radio>
-            <el-radio v-model="JYpeople.state" label="1">备选项</el-radio>
+            <el-radio v-model="JYpeople.state"  name="state" label="0" >正常</el-radio>
+            <el-radio v-model="JYpeople.state" name="state"  label="1" >禁用</el-radio>
           </template>
         </el-form-item>
       </el-form>
@@ -115,7 +112,7 @@ export default {
   name: 'JYpeople',
   data: function () {
     return {
-      state: 0,
+      state: '0',
       updateVisible: false,
       addVisible: false,
       JYpeople: {}
