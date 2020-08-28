@@ -15,7 +15,6 @@
       </el-table-column>
     </el-table>
 
-
     <el-dialog width="40%" title="添加类型" :visible="addVisible">
       <el-form label-width="100px" label-suffix="：" class="form"  ref="fm">
         <el-form-item label="职业名称" prop="ptname">
@@ -27,7 +26,6 @@
         <el-button type="success" @click="addVisible = false">取 消</el-button>
       </div>
     </el-dialog>
-
 
     <el-dialog width="40%" title="修改类型" :visible="updateVisible">
       <el-form label-width="100px" label-suffix="：" class="form"  ref="fm">

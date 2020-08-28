@@ -65,7 +65,7 @@
     </el-dialog>
 
     <!--添加模态框-->
-    <el-dialog width="40%" title="修改员工信息" :visible="addVisible">
+    <el-dialog width="40%" title="添加员工信息" :visible="addVisible">
       <el-form label-width="100px" label-suffix="：" :model="emp" class="form"  ref="fm">
         <el-form-item label="" prop="emid">
           <el-input v-model="emp.emid" name="emid" type="hidden"></el-input>
