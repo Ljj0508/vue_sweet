@@ -1,19 +1,19 @@
 <template>
   <div><!--
     <h1>员工管理  <el-button type="success" @click="showDialogadd">添加</el-button></h1>-->
-    <!-- data:绑定数据  height:声明之后会固定表头-->
-    <el-button round @click="showDialog2()">添加</el-button>
-    <el-table :data="this.$route.query.profession_type" :stripe="true" border >
-      <!-- prop显示绑定的数据的属性 -->
-      <el-table-column prop="ptid" label="编号"></el-table-column>
-      <el-table-column prop="ptname" label="职业名称"></el-table-column>
-      <el-table-column label="操作" fixed="right" width="130px">
-        <template slot-scope="scope">
-          <el-button type="primary" icon="el-icon-edit" @click="showDialog(scope.row)" circle></el-button>
-          <el-button type="danger" icon="el-icon-delete" @click="del(scope.row.ptid)" circle></el-button>
-        </template>
-      </el-table-column>
-    </el-table>
+      <!-- data:绑定数据  height:声明之后会固定表头-->
+      <el-button round @click="showDialog2()">添加</el-button>
+      <el-table :data="this.$route.query.profession_type" :stripe="true" border >
+        <!-- prop显示绑定的数据的属性 -->
+        <el-table-column prop="ptid" label="编号"></el-table-column>
+        <el-table-column prop="ptname" label="职业名称"></el-table-column>
+        <el-table-column label="操作" fixed="right" width="130px">
+          <template slot-scope="scope">
+            <el-button type="primary" icon="el-icon-edit" @click="showDialog(scope.row)" circle></el-button>
+            <el-button type="danger" icon="el-icon-delete" @click="del(scope.row.ptid)" circle></el-button>
+          </template>
+        </el-table-column>
+      </el-table>
 
     <el-dialog width="40%" title="添加类型" :visible="addVisible">
       <el-form label-width="100px" label-suffix="：" :model="profession_type" class="form"  ref="fm" :rules="rules">
@@ -91,7 +91,6 @@ export default {
     },
     update: function () {
       this.$refs['fm'].validate(valid => {
-        alert(valid)
         if (valid==true) {
           this.$axios.post('http://localhost:8888/sweet/profession_type/update', this.$qs.stringify(this.profession_type))
             .then(response => {

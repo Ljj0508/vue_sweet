@@ -4,11 +4,23 @@
     <div id="head">
       <el-header>
         <el-dropdown style="float: right" @command="handlerCommand">
-          <span class="a">欢迎{{$route.params.loginUser}}</span>
+          <span class="a" >欢迎{{$route.params.LoginUser}}</span>
+           <!--<span class="a" v-if="$route.params.LoginUser==admin">-->
+            <!--欢迎:admin-->
+           <!--</span>-->
+           <!--<span class="a" v-else>-->
+            <!--欢迎:{{$route.params.ename}}}-->
+           <!--</span>-->
           <i class="el-icon-arrow-down"></i>
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item command="personal" @click="">个人信息</el-dropdown-item>
-            <el-dropdown-item command="Logout">退出</el-dropdown-item>
+            <el-dropdown-item command="personal" v-if="$route.params.LoginUser=='admin'">
+              <h4 @click="adminShow">1个人信息</h4>
+            </el-dropdown-item>
+            <el-dropdown-item command="personal" v-else>
+              <h4 @click="myShow">2个人信息</h4>
+            </el-dropdown-item>
+
+            <el-dropdown-item command="Logout" @click="">退出</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
       </el-header>
@@ -382,6 +394,26 @@ export default {
           console.log(response.data)
           if (response.data != null) {
             this.$router.push({name: 'jyEmp', query: {emp: response.data}})
+          }
+        })
+    },
+    adminShow: function () {
+      this.$axios.post('http://localhost:8888/sweet/admin/findByName')
+        .then(response => {
+          console.log(response.data)
+          if (response.data != null) {
+            this.$router.push({name: 'adminShow', query: {mesage: response.data}})
+          }
+        })
+    },
+    myShow: function () {
+      this.$axios.post('http://localhost:8888/sweet/emp/findByName', {
+        params: {ename: $route.params.LoginUser}
+      })
+        .then(response => {
+          console.log(response.data)
+          if (response.data != null) {
+            this.$router.push({name: 'empShow', query: {mesage: response.data}})
           }
         })
     }

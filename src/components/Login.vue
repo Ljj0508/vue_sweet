@@ -30,10 +30,9 @@
           name: [
             // require:进行校验,默认校验非空  message:提示信息  trigger:触发校验的事件
             {required: true, message: '用户名不能为空', trigger: 'blur'},
-            {min: 2, max: 10, message: '用户名是2-10位', trigger: ['change', 'blur']},
             // 自定义校验规则
             {
-              trigger: ['change', 'blur'],
+              trigger: ['chcange', 'blur'],
               validator: function (rule, value, callback) {
 // eslint-disable-next-line indent
 // eslint-disable-next-line eqeqeq
@@ -66,7 +65,7 @@
                 if (response.data.length >= 1) {
                   // 登录成功
                   // 挈带参数信息时，只能使用name
-                  this.$router.push({name: 'home', params: {loginUser: response.data}})
+                  this.$router.push({name: 'home', params: {LoginUser: this.emp.name}})
                 } else if (valid) {
                   this.$axios.get('http://localhost:8888/sweet/emp/login', {
                     params: {ename: this.emp.name, epwd: this.emp.pwd}
@@ -75,7 +74,7 @@
                       if (response2.data.length >= 1) {
                         // 登录成功
                         // 挈带参数信息时，只能使用name
-                        this.$router.push({name: 'home', params: {loginUser: response2.data}})
+                        this.$router.push({name: 'home', params: {LoginUser: this.emp.name}})
                       } else {
                         // 登录失败
                         alert('账户或密码错误')

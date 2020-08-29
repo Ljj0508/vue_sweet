@@ -129,6 +129,17 @@ export default new Router({
           path: '/jyEmp',
           name: 'jyEmp',
           component: () => import('../components/jyEmp')
+        },
+        {
+          path: '/empShow',
+          name: 'empShow',
+          component: () => import('../components/empShow')
+        }
+        ,
+        {
+          path: '/adminShow',
+          name: 'adminShow',
+          component: () => import('../components/adminShow')
         }
       ]
     }
