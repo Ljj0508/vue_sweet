@@ -120,31 +120,31 @@ export default {
       rules: {
         ename: [
           // require:进行校验,默认校验非空  message:提示信息  trigger:触发校验的事件
-          {required: true, message: '员工名称不能为空', trigger: 'blur'},
+          {required: true, message: '员工名称不能为空', trigger: 'blur'}
           // 自定义校验规则
 
         ],
         epwd: [
           // require:进行校验,默认校验非空  message:提示信息  trigger:触发校验的事件
-          {required: true, message: '密码不能为空', trigger: 'blur'},
+          {required: true, message: '密码不能为空', trigger: 'blur'}
           // 自定义校验规则
 
         ],
         truename: [
           // require:进行校验,默认校验非空  message:提示信息  trigger:触发校验的事件
-          {required: true, message: '真实姓名不能为空', trigger: 'blur'},
+          {required: true, message: '真实姓名不能为空', trigger: 'blur'}
           // 自定义校验规则
 
         ],
         phone: [
           // require:进行校验,默认校验非空  message:提示信息  trigger:触发校验的事件
-          {required: true, message: '电话不能为空', trigger: 'blur'},
+          {required: true, message: '电话不能为空', trigger: 'blur'}
           // 自定义校验规则
 
         ],
         address: [
           // require:进行校验,默认校验非空  message:提示信息  trigger:触发校验的事件
-          {required: true, message: '住址不能为空', trigger: 'blur'},
+          {required: true, message: '住址不能为空', trigger: 'blur'}
           // 自定义校验规则
 
         ]
@@ -153,12 +153,12 @@ export default {
   },
   methods: {
     showDialog: function (row) {
-    // 显示模态窗口
+      // 显示模态窗口
       this.updateVisible = true
       this.emp = row
     },
     showDialog2: function () {
-    // 显示模态窗口
+      // 显示模态窗口
       this.addVisible = true
       this.emp = {}
     },

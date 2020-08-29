@@ -31,7 +31,7 @@
       <el-table-column prop="bmname" label="客户名称"></el-table-column>
     </el-table>
 
-    </div>
+  </div>
 </template>
 
 <script>
