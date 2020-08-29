@@ -14,10 +14,10 @@
           <i class="el-icon-arrow-down"></i>
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item command="personal" v-if="$route.params.LoginUser=='admin'">
-              <h4 @click="adminShow">1个人信息</h4>
+              <h4 @click="adminShow">个人信息</h4>
             </el-dropdown-item>
             <el-dropdown-item command="personal" v-else>
-              <h4 @click="myShow">2个人信息</h4>
+              <h4 @click="myShow">个人信息</h4>
             </el-dropdown-item>
 
             <el-dropdown-item command="Logout" @click="">退出</el-dropdown-item>
@@ -407,9 +407,8 @@ export default {
         })
     },
     myShow: function () {
-      this.$axios.post('http://localhost:8888/sweet/emp/findByName', {
-        params: {ename: $route.params.LoginUser}
-      })
+      this.$axios.post('http://localhost:8888/sweet/emp/findByName?ename=' + this.$route.params.LoginUser
+      )
         .then(response => {
           console.log(response.data)
           if (response.data != null) {
