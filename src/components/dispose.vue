@@ -16,7 +16,7 @@
       </el-table-column>
       <el-table-column prop="way" label="处理方式">
         <template slot-scope="dispose">
-          {{dispose.row.state==0?"忽略":"警告"}}
+          {{dispose.row.way==0?"忽略":"警告"}}
         </template>
       </el-table-column>
       <el-table-column prop="dtime" label="处理时间"></el-table-column>

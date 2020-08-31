@@ -41,10 +41,10 @@
               <i class="el-icon-camera"></i>
               <span @click="VIPShow">会员用户</span>
             </el-menu-item>
-            <el-menu-item index="2-3">
-              <i class="el-icon-camera"></i>
-              <span @click="choose_mate">择偶信息</span>
-            </el-menu-item>
+            <!--<el-menu-item index="2-3">-->
+              <!--<i class="el-icon-camera"></i>-->
+              <!--<span @click="choose_mate">择偶信息</span>-->
+            <!--</el-menu-item>-->
             <el-menu-item index="2-4">
               <i class="el-icon-camera"></i>
               <span @click="JYShow">禁用用户</span>
@@ -53,15 +53,15 @@
               <i class="el-icon-camera"></i>
               <span @click="life_message">工作生活</span>
             </el-menu-item>
-            <el-menu-item index="2-6">
-              <i class="el-icon-camera"></i>
-              <span @click="photo">客户相册</span>
-            </el-menu-item>
+            <!--<el-menu-item index="2-6">-->
+              <!--<i class="el-icon-camera"></i>-->
+              <!--<span @click="photo">客户相册</span>-->
+            <!--</el-menu-item>-->
+            <!--<el-menu-item index="2-7">-->
+              <!--<i class="el-icon-camera"></i>-->
+              <!--<span @click="attention">关注信息</span>-->
+            <!--</el-menu-item>-->
             <el-menu-item index="2-7">
-              <i class="el-icon-camera"></i>
-              <span @click="attention">关注信息</span>
-            </el-menu-item>
-            <el-menu-item index="2-8">
               <i class="el-icon-camera"></i>
               <span @click="details_message">详情信息</span>
             </el-menu-item>
@@ -249,7 +249,7 @@ export default {
         .then(response => {
           console.log(response.data)
           if (response.data != null) {
-            this.$router.push({name: 'basic_message', query: {basic_message: response.data}})
+            this.$router.push({name: 'basic_message', query: {Ph: response.data}})
           }
         })
     },
@@ -312,7 +312,7 @@ export default {
         .then(response => {
           console.log(response.data)
           if (response.data != null) {
-            this.$router.push({name: 'emp', query: {emp: response.data}})
+            this.$router.push({name: 'emp', query: {Ph: response.data}})
           }
         })
     },
@@ -339,7 +339,7 @@ export default {
         .then(response => {
           console.log(response.data)
           if (response.data != null) {
-            this.$router.push({name: 'profession_type', query: {profession_type: response.data}})
+            this.$router.push({name: 'profession_type', query: {Ph: response.data}})
           }
         })
     },

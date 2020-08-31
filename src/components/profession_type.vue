@@ -3,7 +3,7 @@
     <h1>员工管理  <el-button type="success" @click="showDialogadd">添加</el-button></h1>-->
     <!-- data:绑定数据  height:声明之后会固定表头-->
     <el-button round @click="showDialog2()">添加</el-button>
-    <el-table :data="this.$route.query.profession_type" :stripe="true" border >
+    <el-table :data="this.$route.query.Ph.rows" :stripe="true" border >
       <!-- prop显示绑定的数据的属性 -->
       <el-table-column prop="ptid" label="编号"></el-table-column>
       <el-table-column prop="ptname" label="职业名称"></el-table-column>
@@ -14,6 +14,14 @@
         </template>
       </el-table-column>
     </el-table>
+
+    <el-pagination
+      @current-change="handleCurrentChange"
+      :page-size="3"
+      :pager-count="11"
+      layout="prev, pager, next"
+      :total="this.$route.query.Ph.totalCount">
+    </el-pagination>
 
     <el-dialog width="40%" title="添加类型" :visible="addVisible">
       <el-form label-width="100px" label-suffix="：" :model="profession_type" class="form"  ref="fm" :rules="rules">
@@ -65,10 +73,22 @@ export default {
             }
           }
         ]
-      }
+      },
+      pageNum: 1,
+      pageSize: 7
     }
   },
   methods: {
+    handleCurrentChange (val) {
+      console.log(`当前页 ${val} `)
+      this.$axios.post('http://localhost:8888/sweet/profession_type/findAll?pageNum=' + val + '')
+        .then(response => {
+          console.log(response.data)
+          if (response.data != null) {
+            this.$router.push({name: 'profession_type', query: {Ph: response.data}})
+          }
+        })
+    },
     del: function (row) {
       this.$axios.post('http://localhost:8888/sweet/profession_type/del?id=' + row + '')
         .then(response => {

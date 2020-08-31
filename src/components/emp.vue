@@ -3,7 +3,7 @@
     <h1>员工管理  <el-button type="success" @click="showDialogadd">添加</el-button></h1>-->
     <!-- data:绑定数据  height:声明之后会固定表头-->
     <el-button round @click="showDialog2()">添加</el-button>
-    <el-table :data="this.$route.query.emp" :stripe="true" border>
+    <el-table :data="this.$route.query.Ph.rows" :stripe="true" border>
       <!-- prop显示绑定的数据的属性 -->
       <el-table-column prop="emid" label="编号"></el-table-column>
       <el-table-column prop="ename" label="员工账号名"></el-table-column>
@@ -27,7 +27,13 @@
         </template>
       </el-table-column>
     </el-table>
-
+    <el-pagination
+      @current-change="handleCurrentChange"
+      :page-size="3"
+      :pager-count="11"
+      layout="prev, pager, next"
+      :total="this.$route.query.Ph.totalCount">
+    </el-pagination>
     <!--修改模态框-->
     <el-dialog width="40%" title="修改员工信息" :visible="updateVisible">
       <el-form label-width="100px" label-suffix="：" :model="emp" class="form"  ref="fm" :rules="rules">
@@ -148,10 +154,22 @@ export default {
           // 自定义校验规则
 
         ]
-      }
+      },
+      pageNum: 1,
+      pageSize: 7
     }
   },
   methods: {
+    handleCurrentChange (val) {
+      console.log(`当前页 ${val} `)
+      this.$axios.post('http://localhost:8888/sweet/emp/findAll?pageNum=' + val + '')
+        .then(response => {
+          console.log(response.data)
+          if (response.data != null) {
+            this.$router.push({name: 'emp', query: {Ph: response.data}})
+          }
+        })
+    },
     showDialog: function (row) {
       // 显示模态窗口
       this.updateVisible = true
