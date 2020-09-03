@@ -4,7 +4,7 @@
     <div id="head">
       <el-header>
         <el-dropdown style="float: right" @command="handlerCommand">
-          <span class="a" >欢迎{{$route.params.LoginUser}}</span>
+          <span class="a" style="color: white">欢迎{{$route.params.LoginUser}}</span>
            <!--<span class="a" v-if="$route.params.LoginUser==admin">-->
             <!--欢迎:admin-->
            <!--</span>-->
@@ -20,7 +20,7 @@
               <h4 @click="myShow">个人信息</h4>
             </el-dropdown-item>
 
-            <el-dropdown-item command="Logout" @click="">退出</el-dropdown-item>
+            <el-dropdown-item command="Logout" @click="back">退出</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
       </el-header>
@@ -30,15 +30,15 @@
         <el-menu default-active="1" class="el-menu-vertical-demo">
           <el-submenu index="2">
             <template slot="title">
-              <i class="el-icon-aim"></i>
+              <i></i>
               <span>用户管理</span>
             </template>
             <el-menu-item index="2-1">
-              <i class="el-icon-camera"></i>
+              <i></i>
               <span @click="basic_message">查看用户</span>
             </el-menu-item>
             <el-menu-item index="2-2">
-              <i class="el-icon-camera"></i>
+              <i></i>
               <span @click="VIPShow">会员用户</span>
             </el-menu-item>
             <!--<el-menu-item index="2-3">-->
@@ -46,11 +46,11 @@
               <!--<span @click="choose_mate">择偶信息</span>-->
             <!--</el-menu-item>-->
             <el-menu-item index="2-4">
-              <i class="el-icon-camera"></i>
+              <i></i>
               <span @click="JYShow">禁用用户</span>
             </el-menu-item>
             <el-menu-item index="2-5">
-              <i class="el-icon-camera"></i>
+              <i></i>
               <span @click="life_message">工作生活</span>
             </el-menu-item>
             <!--<el-menu-item index="2-6">-->
@@ -62,112 +62,118 @@
               <!--<span @click="attention">关注信息</span>-->
             <!--</el-menu-item>-->
             <el-menu-item index="2-7">
-              <i class="el-icon-camera"></i>
+              <i></i>
               <span @click="details_message">详情信息</span>
             </el-menu-item>
           </el-submenu>
           <el-submenu index="3">
             <template slot="title">
-              <i class="el-icon-aim"></i>
+              <i></i>
               <span>活动管理</span>
             </template>
             <el-menu-item index="3-1">
-              <i class="el-icon-camera"></i>
+              <i></i>
               <span @click="activityshow">所有活动</span>
             </el-menu-item>
             <el-menu-item index="3-2">
-              <i class="el-icon-camera"></i>
+              <i></i>
               <span @click="applyshow">报名查看</span>
             </el-menu-item>
           </el-submenu>
           <el-submenu index="4">
             <template slot="title">
-              <i class="el-icon-aim"></i>
+              <i></i>
               <span>朋友圈</span>
             </template>
             <el-menu-item index="4-1">
-              <i class="el-icon-camera"></i>
+              <i></i>
               <span @click="PasteShow">查看帖子</span>
             </el-menu-item>
           </el-submenu>
           <el-submenu index="5">
             <template slot="title">
-              <i class="el-icon-aim"></i>
+              <i></i>
               <span>套餐管理</span>
             </template>
             <el-menu-item index="5-1">
-              <i class="el-icon-camera"></i>
+              <i></i>
               <span @click="combo">会员套餐</span>
             </el-menu-item>
             <el-menu-item index="5-2">
-              <i class="el-icon-camera"></i>
+              <i></i>
               <span @click="TOPShow">置顶套餐</span>
             </el-menu-item>
             <el-menu-item index="5-2">
-              <i class="el-icon-camera"></i>
+              <i></i>
               <span @click="pay_fees">缴费记录</span>
             </el-menu-item>
           </el-submenu>
           <el-submenu index="6">
             <template slot="title">
-              <i class="el-icon-aim"></i>
+              <i></i>
               <span>媒体管理</span>
             </template>
             <el-menu-item index="6-1">
-              <i class="el-icon-camera"></i>
+              <i></i>
               <span @click="SuccessShow">成功案例</span>
             </el-menu-item>
             <el-menu-item index="6-2">
-              <i class="el-icon-camera"></i>
+              <i></i>
               <span @click="media">节目广告</span>
             </el-menu-item>
           </el-submenu>
           <el-submenu index="7">
             <template slot="title">
-              <i class="el-icon-aim"></i>
+              <i></i>
               <span>脱单学堂</span>
             </template>
             <el-menu-item index="7-1">
-              <i class="el-icon-camera"></i>
+              <i></i>
               <span @click="class_text">文字课堂</span>
             </el-menu-item>
             <el-menu-item index="7-2">
-              <i class="el-icon-camera"></i>
+              <i></i>
               <span @click="class_vido">视频课堂</span>
             </el-menu-item>
           </el-submenu>
+
           <el-submenu index="8">
             <template slot="title">
-              <i class="el-icon-aim"></i>
+              <i></i>
               <span>员工管理</span>
             </template>
             <el-menu-item index="8-1">
-              <i class="el-icon-camera"></i>
+              <i></i>
               <span @click="emp">员工信息</span>
             </el-menu-item>
             <el-menu-item index="8-2">
-              <i class="el-icon-camera"></i>
+              <i></i>
               <span @click="JYEmp">离职员工</span>
             </el-menu-item>
           </el-submenu>
+
           <el-submenu index="9">
             <template slot="title">
-              <i class="el-icon-aim"></i>
+              <i></i>
               <span>职业管理</span>
             </template>
             <el-menu-item index="9-1">
-              <i class="el-icon-camera"></i>
+              <i></i>
               <span @click="profession_type">职业类型</span>
             </el-menu-item>
           </el-submenu>
           <el-submenu index="10">
             <template slot="title">
-              <i class="el-icon-aim"></i>
+              <i></i>
               <span>举报管理</span>
             </template>
             <el-menu-item index="10-1">
-              <i class="el-icon-camera"></i>
-              <span @click="ShowDispose">举报记录</span>
+              <i></i>
+              <span @click="ShowDispose">已处理举报</span>
+            </el-menu-item>
+            <el-menu-item index="10-1">
+              <i></i>
+              <span @click="ShowNoDispose">未处理举报</span>
             </el-menu-item>
           </el-submenu>
         </el-menu>
@@ -415,6 +421,16 @@ export default {
             this.$router.push({name: 'empShow', query: {mesage: response.data}})
           }
         })
+    },
+    ShowNoDispose: function () {
+      this.$axios.post('http://localhost:8888/sweet/dispose/findByState')
+        .then(response => {
+          console.log(response.data)
+          if (response.data != null) {
+            this.$router.push({name: 'nodispose', query: {dispose: response.data}})
+            this.$router.push({name: 'nodispose', query: {ename: this.$route.params.LoginUser}})
+          }
+        })
     }
   }
 }
@@ -424,7 +440,7 @@ export default {
 <style scoped>
   #head{
     height:50px;
-    background-color:aqua;
+    background-color:black;
     line-height:50px;
   }
   #main{
@@ -439,5 +455,8 @@ export default {
     width:80%;
     background-color: beige;
     float:left;
+  }
+  span{
+    font-weight: bold;
   }
 </style>

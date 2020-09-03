@@ -134,12 +134,16 @@ export default new Router({
           path: '/empShow',
           name: 'empShow',
           component: () => import('../components/empShow')
-        }
-        ,
+        },
         {
           path: '/adminShow',
           name: 'adminShow',
           component: () => import('../components/adminShow')
+        },
+        {
+          path: '/nodispose',
+          name: 'nodispose',
+          component: () => import('../components/nodispose')
         }
       ]
     }

@@ -15,20 +15,20 @@
         </template>
       </el-table-column>
       <el-table-column prop="way" label="处理方式">
-        <template slot-scope="dispose">
-          {{dispose.row.way==0?"忽略":"警告"}}
-        </template>
+        <!--<template slot-scope="dispose">-->
+          <!--{{dispose.row.way==0?"忽略":"警告"}}-->
+        <!--</template>-->
       </el-table-column>
       <el-table-column prop="dtime" label="处理时间"></el-table-column>
       <el-table-column prop="ename" label="处理人"></el-table-column>
-      <!--<el-table-column label="操作" fixed="right" width="130px">-->
-        <!--<template slot-scope="scope">-->
-          <!--<el-button type="primary" icon="el-icon-edit" @click="updateVisible=true;showDialog(scope.row)" circle></el-button>-->
-        <!--</template>-->
-      <!--</el-table-column>-->
-   </el-table>
+      <el-table-column label="操作" fixed="right" width="130px">
+        <template slot-scope="scope">
+          <el-button type="primary" icon="el-icon-edit" @click="updateVisible=true;showDialog(scope.row)" circle></el-button>
+        </template>
+      </el-table-column>
+    </el-table>
 
-   <!--修改模态框-->
+    <!--修改模态框-->
     <el-dialog width="40%" title="修改举报信息" :visible="updateVisible">
       <el-form label-width="100px" label-suffix="：" :model="dispose" class="form"  ref="fm">
         <el-form-item label="" prop="dsid">
@@ -58,17 +58,17 @@
             <el-radio v-model="dispose.way" name="way"  label="1">警告</el-radio>
           </template>
         </el-form-item>
-        <el-form-item label="处理时间" prop="dtime">
-          <el-input v-model="dispose.dtime" name="dtime"></el-input>
-        </el-form-item>
-        <el-form-item label="处理人" prop="ename">
-          <el-input v-model="dispose.ename" name="ename" value="dispose.emid"></el-input>
+        <!--<el-form-item label="处理时间" prop="dtime">-->
+          <!--<el-input v-model="dispose.dtime" name="dtime"></el-input>-->
+        <!--</el-form-item>-->
+        <el-form-item label="处理人" prop="ename" >
+          <el-input v-model="dispose.ename"  name="ename" value="this.ename"></el-input>
         </el-form-item>
       </el-form>
-        <div slot="footer" class="dialog-footer">
-          <el-button type="primary" @click="update();updateVisible=false">修 改</el-button>
-          <el-button type="success" @click="updateVisible = false">取 消</el-button>
-        </div>
+      <div slot="footer" class="dialog-footer">
+        <el-button type="primary" @click="update();updateVisible=false">修 改</el-button>
+        <el-button type="success" @click="updateVisible = false">取 消</el-button>
+      </div>
     </el-dialog>
 
   </div>
@@ -76,11 +76,12 @@
 
 <script>
 export default {
-  name: 'dispose',
+  name: 'nodispose',
   data () {
     return {
       way: '0',
       state: '0',
+      ename: '',
       updateVisible: false,
       dispose: {}
     }
@@ -89,6 +90,7 @@ export default {
     showDialog: function (row) {
       // 显示模态窗口
       this.dispose = row
+      this.ename = this.$route.query.ename
     },
     update: function () {
       this.$axios.post('http://localhost:8888/sweet/dispose/update', this.$qs.stringify(this.dispose))

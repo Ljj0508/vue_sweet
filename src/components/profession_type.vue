@@ -34,12 +34,11 @@
         <el-button type="success" @click="addVisible = false">取 消</el-button>
       </div>
     </el-dialog>
-
     <el-dialog width="40%" title="修改类型" :visible="updateVisible">
       <el-form label-width="100px" label-suffix="：" :model="profession_type" class="form"  ref="fm" :rules="rules">
         <el-form-item label="职业名称" prop="ptname">
           <el-input v-model="profession_type.ptname" name="ptname"></el-input>
-        </el-form-item>
+        </el-form-item>.
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button type="primary" @click="update();updateVisible=false">修 改</el-button>

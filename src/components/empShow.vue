@@ -6,7 +6,7 @@
       <!-- prop显示绑定的数据的属性 -->
       <el-table-column prop="emid" label="编号"></el-table-column>
       <el-table-column prop="ename" label="员工账号名"></el-table-column>
-      <el-table-column prop="epwd" label="密码"></el-table-column>
+      <!--<el-table-column prop="epwd" label="密码"></el-table-column>-->
       <el-table-column prop="truename" label="真实姓名"></el-table-column>
       <el-table-column prop="sex" label="性别">
         <template slot-scope="emp">
@@ -39,6 +39,12 @@
         <el-form-item label="密码" prop="epwd">
           <el-input v-model="mesage.epwd" name="epwd" ></el-input>
         </el-form-item>
+        <!--<el-form-item label="原密码" prop="oldpwd">-->
+          <!--<el-input show-password  name="oldpwd" v-model="mesage.oldpwd"></el-input>-->
+        <!--</el-form-item>-->
+        <!--<el-form-item label="新密码"  prop="newpwd">-->
+          <!--<el-input show-password name="newpwd" v-model="mesage.newpwd"></el-input>-->
+        <!--</el-form-item>-->
         <el-form-item label="真实姓名" prop="truename">
           <el-input v-model="mesage.truename" name="truename" readonly="true" ></el-input>
         </el-form-item>
@@ -46,7 +52,7 @@
           <el-input v-model="mesage.sex" name="sex" readonly="true"></el-input>
         </el-form-item>
         <el-form-item label="手机号" prop="phone">
-          <el-input v-model="mesage.phone" name="phone" ></el-input>
+          <el-input v-model="mesage.phone" name="phone"></el-input>
         </el-form-item>
         <el-form-item label="住址" prop="address">
           <el-input v-model="mesage.address" name="address"  ></el-input>
@@ -71,6 +77,21 @@ export default {
       addVisible: false,
       mesage: {},
       rules: {
+        // oldpwd: [
+        //   // require:进行校验,默认校验非空  message:提示信息  trigger:触发校验的事件
+        //   {required: true, message: '密码不能为空', trigger: 'blur'},
+        //   // 自定义校验规则
+        //   {
+        //     trigger: ['chcange', 'blur'],
+        //     validator: function (rule, value, callback) {
+        //       if (value.indexOf(this.mesage.epwd) == -1) {
+        //         callback()
+        //       } else {
+        //         callback(new Error('原密码不正确'))
+        //       }
+        //     }
+        //   }
+        // ],
         epwd: [
           // require:进行校验,默认校验非空  message:提示信息  trigger:触发校验的事件
           {required: true, message: '密码不能为空', trigger: 'blur'},
@@ -82,8 +103,6 @@ export default {
           // require:进行校验,默认校验非空  message:提示信息  trigger:触发校验的事件
           {required: true, message: '手机号不能为空', trigger: 'blur'},
           {min: 11, max: 11, message: '手机号必须11位哦', trigger: ['change', 'blur']}
-          // 自定义校验规则
-
         ],
         address: [
           // require:进行校验,默认校验非空  message:提示信息  trigger:触发校验的事件
@@ -108,26 +127,17 @@ export default {
     update: function () {
       this.$refs['fm'].validate(valid => {
         if (valid == true) {
-          this.$axios.post('http/localhost:8888/sweet/emp/update', this.$qs.stringify(this.mesage))
+          this.$axios.post('http://localhost:8888/sweet/emp/update', this.$qs.stringify(this.mesage))
             .then(response => {
               if (response.data = 1) {
-                alert(':/修改成功')
+                alert('修改成功')
+                this.$router.push({path: '/'})
               }
             })
         } else {
           alert('修改失败')
         }
       })
-    },
-    add: function () {
-      this.$axios.post('http://localhost:8888/sweet/emp/add', this.$qs.stringify(this.mesage))
-        .then(response => {
-          if (response.data = 1) {
-            alert('添加成功')
-          } else {
-            alert('添加失败')
-          }
-        })
     }
   }
 }

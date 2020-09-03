@@ -34,8 +34,6 @@
             {
               trigger: ['chcange', 'blur'],
               validator: function (rule, value, callback) {
-// eslint-disable-next-line indent
-// eslint-disable-next-line eqeqeq
                 if (value.indexOf('_') == -1) {
                   callback()
                 } else {
