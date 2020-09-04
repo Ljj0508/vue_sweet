@@ -1,5 +1,7 @@
 <template>
-  <div><!--
+  <div>
+    {{this.test}}
+    <!--
     <h1>员工管理  <el-button type="success" @click="showDialogadd">添加</el-button></h1>-->
     <!-- data:绑定数据  height:声明之后会固定表头-->
     <el-table :data="this.$route.query.dispose" :stripe="true" border>
@@ -82,6 +84,7 @@ export default {
       way: '0',
       state: '0',
       ename: '',
+      test: sessionStorage.getItem('emp'),
       updateVisible: false,
       dispose: {}
     }
@@ -89,6 +92,7 @@ export default {
   methods: {
     showDialog: function (row) {
       // 显示模态窗口
+      this.dispose.ename = sessionStorage.getItem('emp')
       this.dispose = row
       this.ename = this.$route.query.ename
     },
