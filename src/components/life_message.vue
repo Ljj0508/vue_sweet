@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- data:绑定数据  height:声明之后会固定表头-->
-    <el-table :data="this.$route.query.life_message" :stripe="true" border>
+    <el-table :data="this.$route.query.Ph.rows" :stripe="true" border>
       <!-- prop显示绑定的数据的属性 -->
       <el-table-column prop="lmid" label="编号"></el-table-column>
       <el-table-column prop="ptname" label="职业类型"></el-table-column>
@@ -31,6 +31,13 @@
       <el-table-column prop="bmname" label="客户名称"></el-table-column>
     </el-table>
 
+    <el-pagination
+      @current-change="handleCurrentChange"
+      :page-size="3"
+      :pager-count="11"
+      layout="prev, pager, next"
+      :total="this.$route.query.Ph.totalCount">
+    </el-pagination>
   </div>
 </template>
 
@@ -41,7 +48,21 @@ export default {
     return {
       updateVisible: false,
       addVisible: false,
-      life_message: {}
+      life_message: {},
+      pageNum: 1,
+      pageSize: 7
+    }
+  },
+  methods: {
+    handleCurrentChange(val) {
+      console.log(`当前页 ${val} `)
+      this.$axios.post('http://localhost:8888/sweet/life_message/findAll?pageNum=' + val + '')
+        .then(response => {
+          console.log(response.data)
+          if (response.data != null) {
+            this.$router.push({name: 'life_message', query: {Ph: response.data}})
+          }
+        })
     }
   }
 }

@@ -20,7 +20,7 @@
               <h4 @click="myShow">个人信息</h4>
             </el-dropdown-item>
 
-            <el-dropdown-item command="Logout" @click="back">退出</el-dropdown-item>
+            <el-dropdown-item command="Logout" @click="">退出</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
       </el-header>
@@ -300,7 +300,7 @@ export default {
         .then(response => {
           console.log(response.data)
           if (response.data != null) {
-            this.$router.push({name: 'life_message', query: {life_message: response.data}})
+            this.$router.push({name: 'life_message', query: {Ph: response.data}})
           }
         })
     },
@@ -350,11 +350,11 @@ export default {
         })
     },
     details_message: function () {
-      this.$axios.post('http://localhost:8888/sweet/details_message/findAll')
+      this.$axios.post('http://localhost:8888/sweet/Details_message/findAll')
         .then(response => {
           console.log(response.data)
           if (response.data != null) {
-            this.$router.push({name: 'details_message', query: {details_message: response.data}})
+            this.$router.push({name: 'details_message', query: {Ph: response.data}})
           }
         })
     },

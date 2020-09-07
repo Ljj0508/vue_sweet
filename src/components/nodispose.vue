@@ -64,7 +64,7 @@
           <!--<el-input v-model="dispose.dtime" name="dtime"></el-input>-->
         <!--</el-form-item>-->
         <el-form-item label="处理人" prop="ename" >
-          <el-input v-model="dispose.ename"  name="ename" value="this.ename"></el-input>
+          <el-input v-model="dispose.ename"  name="ename" value="this.emid"></el-input>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
