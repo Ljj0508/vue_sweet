@@ -12,11 +12,27 @@
       <el-table-column prop="acaddress" label="活动地点"></el-table-column>
       <el-table-column prop="acpeople" label="活动人数"></el-table-column>
       <el-table-column prop="actype" label="活动类型"></el-table-column>
-      <el-table-column prop="acrequest" label="报名要求"></el-table-column>
-      <el-table-column prop="flow" label="操作流程"></el-table-column>
-      <el-table-column prop="remark" label="备注"></el-table-column>
-      <el-table-column label="操作" fixed="right" width="130px">
+      <!--<el-table-column prop="acrequest" label="报名要求"></el-table-column>-->
+      <el-table-column type="expand">
+        <template slot-scope="activity">
+          <el-form label-position="left" inline class="demo-table-expand">
+            <el-form-item label="报名要求:">
+              <span>{{activity.row.acrequest}}</span>
+            </el-form-item>
+            <el-form-item label="备注:">
+              <span>{{activity.row.remark}}</span>
+            </el-form-item>
+            <el-form-item label="操作流程:">
+              <span>{{activity.row.flow}}</span>
+            </el-form-item>
+          </el-form>
+        </template>
+      </el-table-column>
+      <!--<el-table-column prop="flow" label="操作流程"></el-table-column>-->
+      <!--<el-table-column prop="remark" label="备注"></el-table-column>-->
+      <el-table-column label="操作" fixed="right" width="180px">
         <template slot-scope="scope">
+          <!--<el-button type="primary" icon="el-icon-more" @click="showDialog3(scope.row)" circle></el-button>-->
           <el-button type="primary" icon="el-icon-edit" @click="showDialog(scope.row)" circle></el-button>
           <el-button type="danger" icon="el-icon-delete" @click="del(scope.row.acid)" circle></el-button>
         </template>
@@ -62,9 +78,23 @@
         <el-button type="success" @click="updateVisible = false">取 消</el-button>
       </div>
     </el-dialog>
-    <!--添加员工-->
-    <!--添加模态框-->
 
+    <el-dialog width="40%" title="详情" :visible="ShowVisible">
+      <el-form label-width="100px" label-suffix="：" :model="activity" class="form"  ref="fm">
+        <el-form-item label="报名要求" prop="acrequest">
+          <el-input v-model="activity.acrequest" name="acrequest" readonly="true"></el-input>
+        </el-form-item>
+        <el-form-item label="操作流程" prop="flow">
+          <el-input v-model="activity.flow" name="flow" readonly="true"></el-input>
+        </el-form-item>
+        <el-form-item label="备注" prop="remark">
+          <el-input v-model="activity.remark" name="remark" readonly="true"></el-input>
+        </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button type="success" @click="ShowVisible = false">取 消</el-button>
+      </div>
+    </el-dialog>
     <el-dialog width="40%" title="添加活动" :visible="addVisible">
       <el-form label-width="100px" label-suffix="：" class="form"  ref="fm">
         <el-form-item label="活动标题" prop="title">
@@ -110,6 +140,7 @@ export default {
     return {
       updateVisible: false,
       addVisible: false,
+      ShowVisible: false,
       activity: {}
     }
   },
@@ -133,6 +164,11 @@ export default {
       // 显示模态窗口
       this.addVisible = true
       this.activity = {}
+    },
+    showDialog3: function (row) {
+      // 显示模态窗口
+      this.ShowVisible = true
+      this.activity = row
     },
     update: function () {
       this.$axios.post('http://localhost:8888/sweet/Activity/update', this.$qs.stringify(this.activity))

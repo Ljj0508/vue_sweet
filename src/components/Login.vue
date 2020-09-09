@@ -55,9 +55,6 @@
         this.$refs['fm'].validate(valid => {
           // 判断表单校验是否通过  valid：true / false
           if (valid) {
-            console.log(this.emp.name)
-            console.log(this.emp.pwd)
-            console.log()
             this.$axios.get('http://localhost:8888/sweet/admin/login', {
               params: {adname: this.emp.name, pwd: this.emp.pwd}
             })

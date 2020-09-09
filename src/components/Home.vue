@@ -28,10 +28,10 @@
     <div id="main">
       <div id="left">
         <el-menu default-active="1" class="el-menu-vertical-demo">
-          <el-submenu index="2">
+          <el-submenu index="2" >
             <template slot="title">
               <i></i>
-              <span>用户管理</span>
+              <span class="spans">用户管理</span>
             </template>
             <el-menu-item index="2-1">
               <i></i>
@@ -69,7 +69,7 @@
           <el-submenu index="3">
             <template slot="title">
               <i></i>
-              <span>活动管理</span>
+              <span class="spans">活动管理</span>
             </template>
             <el-menu-item index="3-1">
               <i></i>
@@ -83,7 +83,7 @@
           <el-submenu index="4">
             <template slot="title">
               <i></i>
-              <span>朋友圈</span>
+              <span class="spans">朋友圈</span>
             </template>
             <el-menu-item index="4-1">
               <i></i>
@@ -93,7 +93,7 @@
           <el-submenu index="5">
             <template slot="title">
               <i></i>
-              <span>套餐管理</span>
+              <span class="spans">套餐管理</span>
             </template>
             <el-menu-item index="5-1">
               <i></i>
@@ -103,15 +103,11 @@
               <i></i>
               <span @click="TOPShow">置顶套餐</span>
             </el-menu-item>
-            <el-menu-item index="5-2">
-              <i></i>
-              <span @click="pay_fees">缴费记录</span>
-            </el-menu-item>
           </el-submenu>
           <el-submenu index="6">
             <template slot="title">
               <i></i>
-              <span>媒体管理</span>
+              <span class="spans">媒体管理</span>
             </template>
             <el-menu-item index="6-1">
               <i></i>
@@ -125,7 +121,7 @@
           <el-submenu index="7">
             <template slot="title">
               <i></i>
-              <span>脱单学堂</span>
+              <span class="spans">脱单学堂</span>
             </template>
             <el-menu-item index="7-1">
               <i></i>
@@ -140,7 +136,7 @@
           <el-submenu index="8">
             <template slot="title">
               <i></i>
-              <span>员工管理</span>
+              <span class="spans">员工管理</span>
             </template>
             <el-menu-item index="8-1">
               <i></i>
@@ -155,7 +151,7 @@
           <el-submenu index="9">
             <template slot="title">
               <i></i>
-              <span>职业管理</span>
+              <span class="spans">职业管理</span>
             </template>
             <el-menu-item index="9-1">
               <i></i>
@@ -165,7 +161,7 @@
           <el-submenu index="10">
             <template slot="title">
               <i></i>
-              <span>举报管理</span>
+              <span class="spans">举报管理</span>
             </template>
             <el-menu-item index="10-1">
               <i></i>
@@ -174,6 +170,16 @@
             <el-menu-item index="10-1">
               <i></i>
               <span @click="ShowNoDispose">未处理举报</span>
+            </el-menu-item>
+          </el-submenu>
+          <el-submenu index="11">
+            <template slot="title">
+              <i></i>
+              <span class="spans">缴费管理</span>
+            </template>
+            <el-menu-item index="11-1">
+              <i></i>
+              <span @click="pay_fees">缴费记录</span>
             </el-menu-item>
           </el-submenu>
         </el-menu>
@@ -336,7 +342,7 @@ export default {
         .then(response => {
           console.log(response.data)
           if (response.data != null) {
-            this.$router.push({name: 'pay_fees', query: {pay_fees: response.data}})
+            this.$router.push({name: 'pay_fees', query: {Ph: response.data}})
           }
         })
     },
@@ -444,11 +450,11 @@ export default {
     line-height:50px;
   }
   #main{
-    background-color: cadetblue;
+    background-color: black;
   }
   #left{
     width:20%;
-    background-color: aquamarine;
+    background-color: black;
     float:left;
   }
   #right{
@@ -456,7 +462,7 @@ export default {
     background-color: beige;
     float:left;
   }
-  span{
+  .spans{
     font-weight: bold;
   }
 </style>

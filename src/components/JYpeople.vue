@@ -71,9 +71,9 @@
         <el-form-item label="体重" prop="weight">
           <el-input v-model="JYpeople.weight" name="weight" readonly="true"></el-input>
         </el-form-item>
-        <el-form-item label="性别" prop="sex">
-          <el-input v-model="JYpeople.sex" name="sex" readonly="true"></el-input>
-        </el-form-item>
+        <!--<el-form-item label="性别" prop="sex">-->
+          <!--<el-input v-model="JYpeople.sex" name="sex" readonly="true"></el-input>-->
+        <!--</el-form-item>-->
         <el-form-item label="手机号" prop="phone">
           <el-input v-model="JYpeople.phone" name="phone" readonly="true"></el-input>
         </el-form-item>
@@ -86,12 +86,12 @@
         <el-form-item label="出生年月" prop="birthday">
           <el-input v-model="JYpeople.birthday" name="birthday" readonly="true"></el-input>
         </el-form-item>
-        <el-form-item label="婚姻状况" prop="marriage">
-          <el-input v-model="JYpeople.marriage" name="marriage" readonly="true"></el-input>
-        </el-form-item>
-        <el-form-item label="会员" prop="vip">
-          <el-input v-model="JYpeople.vip" name="vip"  readonly="true"></el-input>
-        </el-form-item>
+        <!--<el-form-item label="婚姻状况" prop="marriage">-->
+          <!--<el-input v-model="JYpeople.marriage" name="marriage" readonly="true"></el-input>-->
+        <!--</el-form-item>-->
+        <!--<el-form-item label="会员" prop="vip">-->
+          <!--<el-input v-model="JYpeople.vip" name="vip"  readonly="true"></el-input>-->
+        <!--</el-form-item>-->
         <el-form-item label="状态" prop="state">
           <template>
             <el-radio v-model="JYpeople.state"  name="state" label="0" >正常</el-radio>

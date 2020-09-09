@@ -11,7 +11,7 @@
       <el-table-column prop="pic" label="头像"></el-table-column>
       <el-table-column prop="constellation" label="星座"></el-table-column>
       <el-table-column prop="nation" label="民族"></el-table-column>
-      <el-table-column prop="children" label="有没有孩子"></el-table-column>
+      <!--<el-table-column prop="children" label="有没有孩子"></el-table-column>-->
       <el-table-column prop="education" label="学历"></el-table-column>
       <el-table-column prop="soliloquy" label="内心独白"></el-table-column>
       <el-table-column prop="monthly" label="月收入"></el-table-column>

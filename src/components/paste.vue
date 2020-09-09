@@ -4,14 +4,15 @@
     <!-- data:绑定数据  height:声明之后会固定表头-->
     <el-table :data="this.$route.query.paste" :stripe="true" border>
       <!-- prop显示绑定的数据的属性 -->
-      <el-table-column prop="spid" label="编号"></el-table-column>
-      <el-table-column prop="title" label="发帖标题"></el-table-column>
+      <el-table-column prop="spid" label="编号" width="70px"></el-table-column>
+      <el-table-column prop="title" label="发帖标题" width="100px"></el-table-column>
       <el-table-column prop="context" label="发帖内容"></el-table-column>
-      <el-table-column prop="sendtime" label="发帖时间"></el-table-column>
-      <el-table-column prop="bmname" label="发帖人名称"></el-table-column>
-      <el-table-column label="操作" fixed="right" width="100px">
+      <el-table-column prop="sendtime" label="发帖时间" width="140px"></el-table-column>
+      <el-table-column prop="bmname" label="发帖人名称" width="100px"></el-table-column>
+      <el-table-column label="操作" fixed="right" width="120px">
         <template slot-scope="scope">
-          <el-button type="text" @click="commectShow(scope.row.spid)">查看评论</el-button>
+          <el-button type="primary" @click="commectShow(scope.row.spid)">查看评论</el-button>
+          <!--<el-button type="text" @click="commectShow(scope.row.spid)">查看评论</el-button>-->
         </template>
       </el-table-column>
     </el-table>

@@ -3,8 +3,6 @@
     <el-table :data="this.$route.query.vip" :stripe="true" border>
       <!-- prop显示绑定的数据的属性 -->
       <el-table-column prop="vid" label="编号"></el-table-column>
-      <el-table-column prop="project" label="项目"></el-table-column>
-      <el-table-column prop="paytime" label="开通时间"></el-table-column>
       <el-table-column prop="vtime" label="到期时间"></el-table-column>
       <el-table-column prop="bmname" label="客户昵称"></el-table-column>
     </el-table>

@@ -22,7 +22,6 @@
         <!--</template>-->
       </el-table-column>
       <el-table-column prop="dtime" label="处理时间"></el-table-column>
-      <el-table-column prop="ename" label="处理人"></el-table-column>
       <el-table-column label="操作" fixed="right" width="130px">
         <template slot-scope="scope">
           <el-button type="primary" icon="el-icon-edit" @click="updateVisible=true;showDialog(scope.row)" circle></el-button>
@@ -63,9 +62,9 @@
         <!--<el-form-item label="处理时间" prop="dtime">-->
           <!--<el-input v-model="dispose.dtime" name="dtime"></el-input>-->
         <!--</el-form-item>-->
-        <el-form-item label="处理人" prop="ename" >
-          <el-input v-model="dispose.ename"  name="ename" value="this.emid"></el-input>
-        </el-form-item>
+        <!--<el-form-item label="处理人" prop="ename" >-->
+          <!--<el-input v-model="dispose.ename"  name="ename" value="this.emid"></el-input>-->
+        <!--</el-form-item>-->
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button type="primary" @click="update();updateVisible=false">修 改</el-button>
@@ -101,6 +100,7 @@ export default {
         .then(response => {
           if (response.data = 1) {
             alert('修改成功')
+
           } else {
             alert('修改失败')
           }

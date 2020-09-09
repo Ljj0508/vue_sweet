@@ -20,7 +20,7 @@
         </template>
       </el-table-column>
       <el-table-column prop="dtime" label="处理时间"></el-table-column>
-      <el-table-column prop="ename" label="处理人"></el-table-column>
+      <!--<el-table-column prop="ename" label="处理人"></el-table-column>-->
       <!--<el-table-column label="操作" fixed="right" width="130px">-->
         <!--<template slot-scope="scope">-->
           <!--<el-button type="primary" icon="el-icon-edit" @click="updateVisible=true;showDialog(scope.row)" circle></el-button>-->

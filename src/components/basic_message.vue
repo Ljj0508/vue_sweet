@@ -20,20 +20,20 @@
       <el-table-column prop="pwd" label="密码"></el-table-column>
       <!--<el-table-column prop="address" label="工作地区"></el-table-column>
       <el-table-column prop="birthday" label="出生年月"></el-table-column>-->
-      <!--<el-table-column prop="marriage" label="婚姻状况">-->
-      <!--<template slot-scope="marriage">-->
-        <!--<div v-if="basic_message.row.marriage==0">-->
-          <!--<div>未婚</div>-->
-        <!--</div>-->
-        <!--<div v-if="basic_message.row.marriage==1">-->
-          <!--<div>离婚</div>-->
-        <!--</div>-->
-        <!--<div v-if="basic_message.row.marriage==2">-->
-          <!--<div>丧偶</div>-->
-        <!--</div>-->
-      <!--</template>-->
-    <!--</el-table-column>-->
-      <el-table-column prop="marriage" label="婚姻状况"></el-table-column>
+      <el-table-column prop="marriage" label="婚姻状况">
+      <template slot-scope="basic_message">
+        <div v-if="basic_message.row.marriage==0">
+          <div>未婚</div>
+        </div>
+        <div v-else-if="basic_message.row.marriage==1">
+          <div>离婚</div>
+        </div>
+        <div v-else-if="basic_message.row.marriage==2">
+          <div>丧偶</div>
+        </div>
+      </template>
+    </el-table-column>
+      <!--<el-table-column prop="marriage" label="婚姻状况"></el-table-column>-->
       <el-table-column prop="vip" label="会员">
         <template slot-scope="basic_message">
           {{basic_message.row.vip==0?"会员":"非会员"}}
@@ -80,9 +80,9 @@
         <el-form-item label="体重" prop="weight">
           <el-input v-model="basic_message.weight" name="weight" readonly="true"></el-input>
         </el-form-item>
-        <el-form-item label="性别" prop="sex">
-          <el-input v-model="basic_message.sex" name="sex" readonly="true"></el-input>
-        </el-form-item>
+        <!--<el-form-item label="性别" prop="sex">-->
+          <!--<el-input v-model="basic_message.sex" name="sex" readonly="true"></el-input>-->
+        <!--</el-form-item>-->
         <el-form-item label="手机号" prop="phone">
           <el-input v-model="basic_message.phone" name="phone" readonly="true"></el-input>
         </el-form-item>
@@ -95,12 +95,12 @@
         <el-form-item label="出生年月" prop="birthday">
           <el-input v-model="basic_message.birthday" name="birthday" readonly="true"></el-input>
         </el-form-item>
-        <el-form-item label="婚姻状况" prop="marriage">
-          <el-input v-model="basic_message.marriage" name="marriage" readonly="true"></el-input>
-        </el-form-item>
-        <el-form-item label="会员" prop="vip">
-          <el-input v-model="basic_message.vip" name="vip" readonly="true"></el-input>
-        </el-form-item>
+        <!--<el-form-item label="婚姻状况" prop="marriage">-->
+          <!--<el-input v-model="basic_message.marriage" name="marriage" readonly="true"></el-input>-->
+        <!--</el-form-item>-->
+        <!--<el-form-item label="会员" prop="vip">-->
+          <!--<el-input v-model="basic_message.vip" name="vip" readonly="true"></el-input>-->
+        <!--</el-form-item>-->
         <el-form-item label="状态" prop="state">
           <template>
             <el-radio v-model="basic_message.state"  name="state" label="0">正常</el-radio>
@@ -127,7 +127,7 @@ export default {
       updateVisible: false,
       addVisible: false,
       basic_message: {},
-      state: 0,
+      state: true,
       pageNum: 1,
       pageSize: 7
     }
