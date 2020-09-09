@@ -18,7 +18,7 @@
 </template>
 
 <script>
-  // eslint-disable-next-line indent
+// eslint-disable-next-line indent
   /* eslint-disable indent */
 
   export default {
@@ -62,6 +62,7 @@
                 if (response.data.length >= 1) {
                   // 登录成功
                   // 挈带参数信息时，只能使用name
+                  sessionStorage.setItem('name', this.emp.name)
                   this.$router.push({name: 'home', params: {LoginUser: this.emp.name}})
                 } else if (valid) {
                   this.$axios.get('http://localhost:8888/sweet/emp/login', {
@@ -71,6 +72,7 @@
                       if (response2.data.length >= 1) {
                         // 登录成功
                         // 挈带参数信息时，只能使用name
+                        sessionStorage.setItem('name', this.emp.name)
                         this.$router.push({name: 'home', params: {LoginUser: this.emp.name}})
                       } else {
                         // 登录失败

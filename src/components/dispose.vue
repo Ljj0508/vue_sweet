@@ -6,7 +6,22 @@
       <!-- prop显示绑定的数据的属性 -->
       <el-table-column prop="dsid" label="编号"></el-table-column>
       <el-table-column prop="bname" label="被举报人名称"></el-table-column>
-      <el-table-column prop="types" label="被举报类型"></el-table-column>
+      <el-table-column prop="types" label="被举报类型">
+        <template slot-scope="dispose">
+          <div v-if="dispose.row.types==1">
+            <div>色情</div>
+          </div>
+          <div v-if="dispose.row.types==2">
+            <div>骚扰信息</div>
+          </div>
+          <div v-if="dispose.row.types==3">
+            <div>诈骗钱财</div>
+          </div>
+          <div v-if="dispose.row.types==4">
+            <div>其他</div>
+          </div>
+        </template>
+      </el-table-column>
       <el-table-column prop="reason" label="被举报理由"></el-table-column>
       <el-table-column prop="bmname" label="举报人名称"></el-table-column>
       <el-table-column prop="state" label="处理状态">
@@ -19,7 +34,11 @@
           {{dispose.row.way==0?"忽略":"警告"}}
         </template>
       </el-table-column>
-      <el-table-column prop="dtime" label="处理时间"></el-table-column>
+      <el-table-column prop="dtime" label="处理时间">
+        <template slot-scope="dispose"  >
+          {{new Date(dispose.row.dtime).getFullYear()+'-'+(new Date(dispose.row.dtime).getMonth()+1) +'-'+ new Date(dispose.row.dtime).getDate()}}
+        </template>
+      </el-table-column>
       <!--<el-table-column prop="ename" label="处理人"></el-table-column>-->
       <!--<el-table-column label="操作" fixed="right" width="130px">-->
         <!--<template slot-scope="scope">-->

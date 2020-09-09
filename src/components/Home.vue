@@ -4,7 +4,7 @@
     <div id="head">
       <el-header>
         <el-dropdown style="float: right" @command="handlerCommand">
-          <span class="a" style="color: white">欢迎{{$route.params.LoginUser}}</span>
+          <span class="a" style="color: white">欢迎:{{this.name}}</span>
            <!--<span class="a" v-if="$route.params.LoginUser==admin">-->
             <!--欢迎:admin-->
            <!--</span>-->
@@ -19,7 +19,6 @@
             <el-dropdown-item command="personal" v-else>
               <h4 @click="myShow">个人信息</h4>
             </el-dropdown-item>
-
             <el-dropdown-item command="Logout" @click="">退出</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
@@ -195,6 +194,11 @@
 <script>
 export default {
   name: 'Home',
+  data () {
+    return {
+      name: sessionStorage.getItem('name')
+    }
+  },
   methods: {
     handlerCommand: function (command) {
       this.$router.push({name: command})
@@ -243,7 +247,7 @@ export default {
         .then(response => {
           console.log(response.data)
           if (response.data != null) {
-            this.$router.push({name: 'paste', query: {paste: response.data}})
+            this.$router.push({name: 'paste', query: {Ph: response.data}})
           }
         })
     },

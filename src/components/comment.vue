@@ -6,10 +6,15 @@
       <!-- prop显示绑定的数据的属性 -->
       <el-table-column prop="cpid" label="编号"></el-table-column>
       <el-table-column prop="context" label="评论内容"></el-table-column>
-      <el-table-column prop="commention" label="评论时间"></el-table-column>
+      <el-table-column prop="commention" label="评论时间">
+        <template slot-scope="comment"  >
+          {{new Date(comment.row.commention).getFullYear()+'-'+(new Date(comment.row.commention).getMonth()+1) +'-'+ new Date(comment.row.commention).getDate()}}
+        </template>
+      </el-table-column>
       <el-table-column prop="title" label="评论的主贴标题"></el-table-column>
       <el-table-column prop="bmname" label="评论人名称"></el-table-column>
     </el-table>
+    <el-button type="primary" @click="PasteShow()" style="margin-left:1100px">返 回</el-button>
   </div>
 </template>
 
@@ -21,6 +26,17 @@ export default {
       updateVisible: false,
       addVisible: false,
       comment: {}
+    }
+  },
+  methods: {
+    PasteShow: function () {
+      this.$axios.post('http://localhost:8888/sweet/send_paste/findAll')
+        .then(response => {
+          console.log(response.data)
+          if (response.data != null) {
+            this.$router.push({name: 'paste', query: {Ph: response.data}})
+          }
+        })
     }
   }
 }

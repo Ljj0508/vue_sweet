@@ -7,7 +7,7 @@
       <!-- prop显示绑定的数据的属性 -->
       <el-table-column prop="cvid" label="编号"></el-table-column>
       <el-table-column prop="cvname" label="视频标题"></el-table-column>
-      <el-table-column prop="voids" label="视频路劲"></el-table-column>
+      <el-table-column prop="voids" label="视频路径"></el-table-column>
       <!--<el-table-column prop="info" label="视频内容介绍"></el-table-column>-->
       <el-table-column type="expand">
         <template  slot-scope="class_vido">

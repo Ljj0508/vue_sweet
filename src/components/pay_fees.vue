@@ -8,7 +8,11 @@
       <el-table-column prop="pfid" label="编号"></el-table-column>
       <el-table-column prop="peoject" label="项目"></el-table-column>
       <el-table-column prop="money" label="金额"></el-table-column>
-      <el-table-column prop="paytime" label="缴费时长"></el-table-column>
+      <el-table-column prop="paytime" label="缴费时间">
+        <template slot-scope="pay_fees">
+          {{new Date(pay_fees.row.paytime).getFullYear()+'-'+(new Date(pay_fees.row.paytime).getMonth()+1) +'-'+ new Date(pay_fees.row.paytime).getDate()}}
+        </template>
+      </el-table-column>
       <el-table-column prop="ptime" label="时长"></el-table-column>
       <el-table-column prop="bmname" label="客户名称"></el-table-column>
     </el-table>

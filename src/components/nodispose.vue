@@ -8,7 +8,22 @@
       <!-- prop显示绑定的数据的属性 -->
       <el-table-column prop="dsid" label="编号"></el-table-column>
       <el-table-column prop="bname" label="被举报人名称"></el-table-column>
-      <el-table-column prop="types" label="被举报类型"></el-table-column>
+      <el-table-column prop="types" label="被举报类型">
+        <template slot-scope="dispose">
+          <div v-if="dispose.row.types==1">
+            <div>色情</div>
+          </div>
+          <div v-if="dispose.row.types==2">
+            <div>骚扰信息</div>
+          </div>
+          <div v-if="dispose.row.types==3">
+            <div>诈骗钱财</div>
+          </div>
+          <div v-if="dispose.row.types==4">
+            <div>其他</div>
+          </div>
+        </template>
+      </el-table-column>
       <el-table-column prop="reason" label="被举报理由"></el-table-column>
       <el-table-column prop="bmname" label="举报人名称"></el-table-column>
       <el-table-column prop="state" label="处理状态">
@@ -36,7 +51,10 @@
           <el-input v-model="dispose.dsid" name="dsid" type="hidden"></el-input>
         </el-form-item>
         <el-form-item label="被举报名称" prop="bname">
-          <el-input v-model="dispose.bname" name="bname" value="dispose.bmid" readonly="true" ></el-input>
+          <el-input v-model="dispose.bname" name="bname"  readonly="true" ></el-input>
+        </el-form-item>
+        <el-form-item label="被举报Id" prop="bname">
+          <el-input v-model="dispose.bid" name="bname" readonly="true" ></el-input>
         </el-form-item>
         <el-form-item label="被举报类型" prop="types">
           <el-input v-model="dispose.types" name="types"  readonly="true" ></el-input>
@@ -100,7 +118,20 @@ export default {
         .then(response => {
           if (response.data = 1) {
             alert('修改成功')
-
+            alert(this.dispose.way)
+            alert(this.dispose.bmid)
+            if (this.dispose.way = 1) {
+              alert('进入方法')
+              this.$axios.post('http://localhost:8888/sweet/message/addmes?one=' + this.dispose.bmid + '&context=' + '你已经被举报了，请注意你的措辞'
+              )
+                .then(response => {
+                  if (response.data = 1) {
+                    alert('警告成功')
+                  } else {
+                    alert('警告失败')
+                  }
+                })
+            }
           } else {
             alert('修改失败')
           }

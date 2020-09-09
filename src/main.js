@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router' // 引入路由
 import axios from 'axios'
+
 // 引入JQ
 // import $ from 'jquery'
 import ElementUI from 'element-ui' // element-ui的全部组件
