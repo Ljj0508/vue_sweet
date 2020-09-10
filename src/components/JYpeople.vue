@@ -16,24 +16,24 @@
         </template>
       </el-table-column>
       <!--<el-table-column prop="sex" label="性别"></el-table-column>-->
-      <el-table-column prop="phone" label="手机号"></el-table-column>
+      <el-table-column prop="phone" label="手机号" width="120px"></el-table-column>
       <el-table-column prop="pwd" label="密码"></el-table-column>
       <!--<el-table-column prop="address" label="工作地区"></el-table-column>
       <el-table-column prop="birthday" label="出生年月"></el-table-column>-->
-      <!--<el-table-column prop="marriage" label="婚姻状况">-->
-       <!--<template slot-scope="marriage">-->
-          <!--<div v-if="marriage==0">-->
-          <!--<div>未婚</div>-->
-          <!--</div>-->
-          <!--<div v-if="marriage==1">-->
-          <!--<div>离婚</div>-->
-          <!--</div>-->
-          <!--<div v-if="marriage==2">-->
-          <!--<div>丧偶</div>-->
-          <!--</div>-->
-       <!--</template>-->
-      <!--</el-table-column>-->
-      <el-table-column prop="marriage" label="婚姻状况"></el-table-column>
+      <el-table-column prop="marriage" label="婚姻状况">
+      <template slot-scope="JYpeople">
+        <div v-if="JYpeople.row.marriage==0">
+          <div>未婚</div>
+        </div>
+        <div v-else-if="JYpeople.row.marriage==1">
+          <div>离婚</div>
+        </div>
+        <div v-else-if="JYpeople.row.marriage==2">
+          <div>丧偶</div>
+        </div>
+      </template>
+      </el-table-column>
+      <!--<el-table-column prop="marriage" label="婚姻状况"></el-table-column>-->
       <el-table-column prop="vip" label="会员">
         <template slot-scope="JYpeople">
           {{JYpeople.row.vip==0?"会员":"非会员"}}
@@ -51,7 +51,7 @@
       </el-table-column>
     </el-table>
 
-    <el-dialog width="40%" title="修改活动" :visible="updateVisible">
+    <el-dialog width="40%" title="修改资料" :visible="updateVisible">
       <el-form label-width="100px" label-suffix="：" :model="JYpeople" class="form"  ref="fm">
         <el-form-item label="" prop="bmid">
           <el-input v-model="JYpeople.bmid" name="bmid" type="hidden"></el-input>

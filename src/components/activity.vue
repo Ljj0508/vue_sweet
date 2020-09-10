@@ -46,31 +46,31 @@
           <el-input v-model="activity.acid" name="acid" type="hidden"></el-input>
         </el-form-item>
         <el-form-item label="活动标题" prop="title">
-          <el-input v-model="activity.title" name="title"></el-input>
+          <el-input v-model="activity.title" name="title" readonly="true"></el-input>
         </el-form-item>
         <el-form-item label="活动主办" prop="achost">
-          <el-input v-model="activity.achost" name="achost"></el-input>
+          <el-input v-model="activity.achost" name="achost" readonly="true"></el-input>
         </el-form-item>
         <el-form-item label="活动时间" prop="actime">
-          <el-input v-model="activity.actime" name="actime"></el-input>
+          <el-input v-model="activity.actime" name="actime" readonly="true"></el-input>
         </el-form-item>
         <el-form-item label="活动地点" prop="acaddress">
-          <el-input v-model="activity.acaddress" name="acaddress"></el-input>
+          <el-input v-model="activity.acaddress" name="acaddress" readonly="true"></el-input>
         </el-form-item>
         <el-form-item label="活动人数" prop="acpeople">
-          <el-input v-model="activity.acpeople" name="acpeople"></el-input>
+          <el-input v-model="activity.acpeople" name="acpeople" readonly="true"> </el-input>
         </el-form-item>
         <el-form-item label="活动类型" prop="actype">
-          <el-input v-model="activity.actype" name="actype"></el-input>
+          <el-input v-model="activity.actype" name="actype" readonly="true"></el-input>
         </el-form-item>
         <el-form-item label="报名要求" prop="acrequest">
-          <el-input v-model="activity.acrequest" name="acrequest"></el-input>
+          <el-input v-model="activity.acrequest" name="acrequest" readonly="true"></el-input>
         </el-form-item>
         <el-form-item label="操作流程" prop="flow">
-          <el-input v-model="activity.flow" name="flow"></el-input>
+          <el-input v-model="activity.flow" name="flow" readonly="true"></el-input>
         </el-form-item>
         <el-form-item label="备注" prop="remark">
-          <el-input v-model="activity.remark" name="remark"></el-input>
+          <el-input v-model="activity.remark" name="remark" readonly="true"></el-input>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">

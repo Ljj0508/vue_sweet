@@ -39,11 +39,13 @@
           {{basic_message.row.vip==0?"会员":"非会员"}}
         </template>
       </el-table-column>
+
       <el-table-column prop="state" label="状态">
         <template slot-scope="basic_message">
           {{basic_message.row.state==0?"正常":"禁用"}}
         </template>
       </el-table-column>
+
       <el-table-column label="操作" fixed="right" width="130px">
         <template slot-scope="scope">
           <el-button type="primary" icon="el-icon-edit" @click="updateVisible=true;showDialog(scope.row)"></el-button>
@@ -75,13 +77,17 @@
           <el-input v-model="basic_message.age" name="age" readonly="true"></el-input>
         </el-form-item>
         <el-form-item label="身高" prop="height">
-          <el-input v-model="basic_message.height" name="height" readonly="true"></el-input>
+          <el-input v-model="basic_message.height+ 'cm'" name="height" readonly="true"></el-input>
         </el-form-item>
         <el-form-item label="体重" prop="weight">
-          <el-input v-model="basic_message.weight" name="weight" readonly="true"></el-input>
+          <el-input v-model="basic_message.weight+ 'kg'" name="weight" readonly="true"></el-input>
         </el-form-item>
         <!--<el-form-item label="性别" prop="sex">-->
-          <!--<el-input v-model="basic_message.sex" name="sex" readonly="true"></el-input>-->
+          <!--&lt;!&ndash;<el-input v-model="radio" name="sex" readonly="true"></el-input>&ndash;&gt;-->
+          <!--<template>-->
+            <!--<el-radio v-model="sex" label="0">女</el-radio>-->
+            <!--<el-radio v-model="sex" label="1">男</el-radio>-->
+          <!--</template>-->
         <!--</el-form-item>-->
         <el-form-item label="手机号" prop="phone">
           <el-input v-model="basic_message.phone" name="phone" readonly="true"></el-input>
@@ -103,8 +109,8 @@
         <!--</el-form-item>-->
         <el-form-item label="状态" prop="state">
           <template>
-            <el-radio v-model="basic_message.state"  name="state" label="0">正常</el-radio>
-            <el-radio v-model="basic_message.state" name="state"  label="1">禁用</el-radio>
+            <el-radio v-model="basic_message.state" name="state" label="0">正常</el-radio>
+            <el-radio v-model="basic_message.state" name="state" label="1">禁用</el-radio>
           </template>
         </el-form-item>
       </el-form>
@@ -124,10 +130,11 @@ export default {
   name: 'basic_message',
   data () {
     return {
+      state: 0,
+      sex: 0,
       updateVisible: false,
       addVisible: false,
       basic_message: {},
-      state: true,
       pageNum: 1,
       pageSize: 7
     }

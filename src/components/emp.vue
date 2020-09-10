@@ -49,9 +49,6 @@
         <el-form-item label="真实姓名" prop="truename">
           <el-input v-model="emp.truename" name="truename" readonly="true"></el-input>
         </el-form-item>
-        <el-form-item label="性别" prop="sex">
-          <el-input v-model="emp.sex" name="sex" readonly="true"></el-input>
-        </el-form-item>
         <el-form-item label="手机号" prop="phone">
           <el-input v-model="emp.phone" name="phone" readonly="true"></el-input>
         </el-form-item>
@@ -182,7 +179,6 @@ export default {
     },
     update: function () {
       this.$refs['fm'].validate(valid => {
-        alert(valid)
         if (valid == true) {
           this.$axios.post('http://localhost:8888/sweet/emp/update', this.$qs.stringify(this.emp))
             .then(response => {

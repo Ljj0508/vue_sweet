@@ -1,19 +1,14 @@
 <template>
   <div id="con">
-    <h1>相亲网后台管理系统</h1>
+    <h1 style="font-weight: bold">相亲网后台管理系统</h1>
     <div id="head">
       <el-header>
         <el-dropdown style="float: right" @command="handlerCommand">
           <span class="a" style="color: white">欢迎:{{this.name}}</span>
-           <!--<span class="a" v-if="$route.params.LoginUser==admin">-->
-            <!--欢迎:admin-->
-           <!--</span>-->
-           <!--<span class="a" v-else>-->
-            <!--欢迎:{{$route.params.ename}}}-->
-           <!--</span>-->
+
           <i class="el-icon-arrow-down"></i>
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item command="personal" v-if="$route.params.LoginUser=='admin'">
+            <el-dropdown-item command="personal" v-if="this.name=='admin'">
               <h4 @click="adminShow">个人信息</h4>
             </el-dropdown-item>
             <el-dropdown-item command="personal" v-else>
@@ -26,162 +21,267 @@
     </div>
     <div id="main">
       <div id="left">
-        <el-menu default-active="1" class="el-menu-vertical-demo">
-          <el-submenu index="2" >
-            <template slot="title">
-              <i></i>
-              <span class="spans">用户管理</span>
-            </template>
-            <el-menu-item index="2-1">
-              <i></i>
-              <span @click="basic_message">查看用户</span>
-            </el-menu-item>
-            <el-menu-item index="2-2">
-              <i></i>
-              <span @click="VIPShow">会员用户</span>
-            </el-menu-item>
-            <!--<el-menu-item index="2-3">-->
+        <div v-if="this.name=='admin'">
+          <el-menu default-active="1" class="el-menu-vertical-demo">
+            <el-submenu index="2" id="lefts">
+              <template slot="title">
+                <span class="spans">用户管理</span>
+              </template>
+              <el-menu-item index="2-1" id="items">
+                <i></i>
+                <span @click="basic_message">查看用户</span>
+              </el-menu-item>
+              <el-menu-item index="2-2" id="items">
+                <i></i>
+                <span @click="VIPShow">会员用户</span>
+              </el-menu-item>
+              <!--<el-menu-item index="2-3">-->
               <!--<i class="el-icon-camera"></i>-->
               <!--<span @click="choose_mate">择偶信息</span>-->
-            <!--</el-menu-item>-->
-            <el-menu-item index="2-4">
-              <i></i>
-              <span @click="JYShow">禁用用户</span>
-            </el-menu-item>
-            <el-menu-item index="2-5">
-              <i></i>
-              <span @click="life_message">工作生活</span>
-            </el-menu-item>
-            <!--<el-menu-item index="2-6">-->
-              <!--<i class="el-icon-camera"></i>-->
-              <!--<span @click="photo">客户相册</span>-->
-            <!--</el-menu-item>-->
-            <!--<el-menu-item index="2-7">-->
-              <!--<i class="el-icon-camera"></i>-->
-              <!--<span @click="attention">关注信息</span>-->
-            <!--</el-menu-item>-->
-            <el-menu-item index="2-7">
-              <i></i>
-              <span @click="details_message">详情信息</span>
-            </el-menu-item>
-          </el-submenu>
-          <el-submenu index="3">
-            <template slot="title">
-              <i></i>
-              <span class="spans">活动管理</span>
-            </template>
-            <el-menu-item index="3-1">
-              <i></i>
-              <span @click="activityshow">所有活动</span>
-            </el-menu-item>
-            <el-menu-item index="3-2">
-              <i></i>
-              <span @click="applyshow">报名查看</span>
-            </el-menu-item>
-          </el-submenu>
-          <el-submenu index="4">
-            <template slot="title">
-              <i></i>
-              <span class="spans">朋友圈</span>
-            </template>
-            <el-menu-item index="4-1">
-              <i></i>
-              <span @click="PasteShow">查看帖子</span>
-            </el-menu-item>
-          </el-submenu>
-          <el-submenu index="5">
-            <template slot="title">
-              <i></i>
-              <span class="spans">套餐管理</span>
-            </template>
-            <el-menu-item index="5-1">
-              <i></i>
-              <span @click="combo">会员套餐</span>
-            </el-menu-item>
-            <el-menu-item index="5-2">
-              <i></i>
-              <span @click="TOPShow">置顶套餐</span>
-            </el-menu-item>
-          </el-submenu>
-          <el-submenu index="6">
-            <template slot="title">
-              <i></i>
-              <span class="spans">媒体管理</span>
-            </template>
-            <el-menu-item index="6-1">
-              <i></i>
-              <span @click="SuccessShow">成功案例</span>
-            </el-menu-item>
-            <el-menu-item index="6-2">
-              <i></i>
-              <span @click="media">节目广告</span>
-            </el-menu-item>
-          </el-submenu>
-          <el-submenu index="7">
-            <template slot="title">
-              <i></i>
-              <span class="spans">脱单学堂</span>
-            </template>
-            <el-menu-item index="7-1">
-              <i></i>
-              <span @click="class_text">文字课堂</span>
-            </el-menu-item>
-            <el-menu-item index="7-2">
-              <i></i>
-              <span @click="class_vido">视频课堂</span>
-            </el-menu-item>
-          </el-submenu>
-
-          <el-submenu index="8">
-            <template slot="title">
-              <i></i>
-              <span class="spans">员工管理</span>
-            </template>
-            <el-menu-item index="8-1">
-              <i></i>
-              <span @click="emp">员工信息</span>
-            </el-menu-item>
-            <el-menu-item index="8-2">
-              <i></i>
-              <span @click="JYEmp">离职员工</span>
-            </el-menu-item>
-          </el-submenu>
-
-          <el-submenu index="9">
-            <template slot="title">
-              <i></i>
-              <span class="spans">职业管理</span>
-            </template>
-            <el-menu-item index="9-1">
-              <i></i>
-              <span @click="profession_type">职业类型</span>
-            </el-menu-item>
-          </el-submenu>
-          <el-submenu index="10">
-            <template slot="title">
-              <i></i>
-              <span class="spans">举报管理</span>
-            </template>
-            <el-menu-item index="10-1">
-              <i></i>
-              <span @click="ShowDispose">已处理举报</span>
-            </el-menu-item>
-            <el-menu-item index="10-1">
-              <i></i>
-              <span @click="ShowNoDispose">未处理举报</span>
-            </el-menu-item>
-          </el-submenu>
-          <el-submenu index="11">
-            <template slot="title">
-              <i></i>
-              <span class="spans">缴费管理</span>
-            </template>
-            <el-menu-item index="11-1">
-              <i></i>
-              <span @click="pay_fees">缴费记录</span>
-            </el-menu-item>
-          </el-submenu>
-        </el-menu>
+              <!--</el-menu-item>-->
+              <el-menu-item index="2-4" id="items">
+                <i></i>
+                <span @click="JYShow">禁用用户</span>
+              </el-menu-item>
+              <el-menu-item index="2-5" id="items">
+                <i></i>
+                <span @click="life_message">工作生活</span>
+              </el-menu-item>
+              <el-menu-item index="2-7" id="items">
+                <i></i>
+                <span @click="details_message">详情信息</span>
+              </el-menu-item>
+            </el-submenu>
+            <el-submenu index="3" id="lefts">
+              <template slot="title">
+                <span class="spans">活动管理</span>
+              </template>
+              <el-menu-item index="3-1"  id="items">
+                <i></i>
+                <span @click="activityshow">所有活动</span>
+              </el-menu-item>
+              <el-menu-item index="3-2"  id="items">
+                <i></i>
+                <span @click="applyshow">报名查看</span>
+              </el-menu-item>
+            </el-submenu>
+            <el-submenu index="4" id="lefts">
+              <template slot="title">
+                <i></i>
+                <span class="spans">朋友圈</span>
+              </template>
+              <el-menu-item index="4-1"  id="items">
+                <i></i>
+                <span @click="PasteShow">查看帖子</span>
+              </el-menu-item>
+            </el-submenu>
+            <el-submenu index="5" id="lefts">
+              <template slot="title">
+                <span class="spans">套餐管理</span>
+              </template>
+              <el-menu-item index="5-1"  id="items">
+                <i></i>
+                <span @click="combo">会员套餐</span>
+              </el-menu-item>
+              <el-menu-item index="5-2"  id="items">
+                <i></i>
+                <span @click="TOPShow">置顶套餐</span>
+              </el-menu-item>
+            </el-submenu>
+            <el-submenu index="6" id="lefts">
+              <template slot="title">
+                <span class="spans">媒体管理</span>
+              </template>
+              <el-menu-item index="6-1"  id="items">
+                <i></i>
+                <span @click="SuccessShow">成功案例</span>
+              </el-menu-item>
+              <el-menu-item index="6-2"  id="items">
+                <i></i>
+                <span @click="media">节目广告</span>
+              </el-menu-item>
+            </el-submenu>
+            <el-submenu index="7" id="lefts">
+              <template slot="title">
+                <span class="spans">脱单学堂</span>
+              </template>
+              <el-menu-item index="7-1"  id="items">
+                <i></i>
+                <span @click="class_text">文字课堂</span>
+              </el-menu-item>
+              <el-menu-item index="7-2" id="items">
+                <i></i>
+                <span @click="class_vido">视频课堂</span>
+              </el-menu-item>
+            </el-submenu>
+            <el-submenu index="8" id="lefts">
+              <template slot="title">
+                <span class="spans">员工管理</span>
+              </template>
+              <el-menu-item index="8-1"  id="items">
+                <i></i>
+                <span @click="emp">员工信息</span>
+              </el-menu-item>
+              <el-menu-item index="8-2"  id="items">
+                <i></i>
+                <span @click="JYEmp">离职员工</span>
+              </el-menu-item>
+            </el-submenu>
+            <el-submenu index="9" id="lefts">
+              <template slot="title">
+                <span class="spans">职业管理</span>
+              </template>
+              <el-menu-item index="9-1"  id="items">
+                <i></i>
+                <span @click="profession_type">职业类型</span>
+              </el-menu-item>
+            </el-submenu>
+            <el-submenu index="10" id="lefts">
+              <template slot="title">
+                <span class="spans">举报管理</span>
+              </template>
+              <el-menu-item index="10-1"  id="items">
+                <i></i>
+                <span @click="ShowDispose">已处理举报</span>
+              </el-menu-item>
+              <el-menu-item index="10-1">
+                <i></i>
+                <span @click="ShowNoDispose">未处理举报</span>
+              </el-menu-item>
+            </el-submenu>
+            <el-submenu index="11" id="lefts">
+              <template slot="title">
+                <span class="spans">缴费管理</span>
+              </template>
+              <el-menu-item index="11-1"  id="items">
+                <i></i>
+                <span @click="pay_fees">缴费记录</span>
+              </el-menu-item>
+            </el-submenu>
+          </el-menu>
+        </div>
+        <div v-else>
+          <el-menu default-active="1" class="el-menu-vertical-demo">
+            <el-submenu index="2">
+              <template slot="title">
+                <span class="spans">用户管理</span>
+              </template>
+              <el-menu-item index="2-1" id="items">
+                <i></i>
+                <span @click="basic_message">查看用户</span>
+              </el-menu-item>
+              <el-menu-item index="2-2" id="items">
+                <i></i>
+                <span @click="VIPShow">会员用户</span>
+              </el-menu-item>
+              <el-menu-item index="2-4" id="items">
+                <i></i>
+                <span @click="JYShow">禁用用户</span>
+              </el-menu-item>
+              <el-menu-item index="2-5" id="items">
+                <i></i>
+                <span @click="life_message">工作生活</span>
+              </el-menu-item>
+              <el-menu-item index="2-7" id="items">
+                <i></i>
+                <span @click="details_message">详情信息</span>
+              </el-menu-item>
+            </el-submenu>
+            <el-submenu index="3">
+              <template slot="title">
+                <span class="spans">活动管理</span>
+              </template>
+              <el-menu-item index="3-1" id="items">
+                <i></i>
+                <span @click="activityshow">所有活动</span>
+              </el-menu-item>
+              <el-menu-item index="3-2" id="items">
+                <i></i>
+                <span @click="applyshow">报名查看</span>
+              </el-menu-item>
+            </el-submenu>
+            <el-submenu index="4">
+              <template slot="title">
+                <i></i>
+                <span class="spans">朋友圈</span>
+              </template>
+              <el-menu-item index="4-1" id="items">
+                <i></i>
+                <span @click="PasteShow">查看帖子</span>
+              </el-menu-item>
+            </el-submenu>
+            <el-submenu index="5">
+              <template slot="title">
+                <span class="spans">套餐管理</span>
+              </template>
+              <el-menu-item index="5-1" id="items">
+                <i></i>
+                <span @click="combo">会员套餐</span>
+              </el-menu-item>
+              <el-menu-item index="5-2" id="items">
+                <i></i>
+                <span @click="TOPShow">置顶套餐</span>
+              </el-menu-item>
+            </el-submenu>
+            <el-submenu index="6">
+              <template slot="title">
+                <span class="spans">媒体管理</span>
+              </template>
+              <el-menu-item index="6-1" id="items">
+                <i></i>
+                <span @click="SuccessShow">成功案例</span>
+              </el-menu-item>
+              <el-menu-item index="6-2" id="items">
+                <i></i>
+                <span @click="media">节目广告</span>
+              </el-menu-item>
+            </el-submenu>
+            <el-submenu index="7">
+              <template slot="title">
+                <span class="spans">脱单学堂</span>
+              </template>
+              <el-menu-item index="7-1" id="items">
+                <i></i>
+                <span @click="class_text">文字课堂</span>
+              </el-menu-item>
+              <el-menu-item index="7-2" id="items">
+                <i></i>
+                <span @click="class_vido">视频课堂</span>
+              </el-menu-item>
+            </el-submenu>
+            <el-submenu index="9">
+              <template slot="title">
+                <span class="spans">职业管理</span>
+              </template>
+              <el-menu-item index="9-1" id="items">
+                <i></i>
+                <span @click="profession_type">职业类型</span>
+              </el-menu-item>
+            </el-submenu>
+            <el-submenu index="10">
+              <template slot="title">
+                <span class="spans">举报管理</span>
+              </template>
+              <el-menu-item index="10-1"  id="items">
+                <i></i>
+                <span @click="ShowDispose">已处理举报</span>
+              </el-menu-item>
+              <el-menu-item index="10-2"  id="items">
+                <i></i>
+                <span @click="ShowNoDispose">未处理举报</span>
+              </el-menu-item>
+            </el-submenu>
+            <el-submenu index="11">
+              <template slot="title">
+                <span class="spans">缴费管理</span>
+              </template>
+              <el-menu-item index="11-1"  id="items">
+                <i></i>
+                <span @click="pay_fees">缴费记录</span>
+              </el-menu-item>
+            </el-submenu>
+          </el-menu>
+        </div>
       </div>
       <div id="right">
         <!-- 二级路由 -->
@@ -468,5 +568,14 @@ export default {
   }
   .spans{
     font-weight: bold;
+    color:black;
+    font-size: 17px;
+  }
+
+  #items{
+    background-color: antiquewhite;
+  }
+  span{
+    font-size: 15px;
   }
 </style>

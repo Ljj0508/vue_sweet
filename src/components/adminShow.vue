@@ -59,6 +59,7 @@ export default {
             .then(response => {
               if (response.data = 1) {
                 alert('修改成功')
+                this.$router.push({path: '/'})
               }
             })
         } else {

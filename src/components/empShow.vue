@@ -48,9 +48,9 @@
         <el-form-item label="真实姓名" prop="truename">
           <el-input v-model="mesage.truename" name="truename" readonly="true" ></el-input>
         </el-form-item>
-        <el-form-item label="性别" prop="sex">
-          <el-input v-model="mesage.sex" name="sex" readonly="true"></el-input>
-        </el-form-item>
+        <!--<el-form-item label="性别" prop="sex">-->
+          <!--<el-input v-model="mesage.sex" name="sex" readonly="true"></el-input>-->
+        <!--</el-form-item>-->
         <el-form-item label="手机号" prop="phone">
           <el-input v-model="mesage.phone" name="phone"></el-input>
         </el-form-item>

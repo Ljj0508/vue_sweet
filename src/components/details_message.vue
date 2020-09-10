@@ -6,11 +6,11 @@
       <!-- prop显示绑定的数据的属性 -->
       <el-table-column prop="dmid" label="编号"></el-table-column>
       <el-table-column prop="natives" label="籍贯"></el-table-column>
-      <el-table-column prop="truename" label="真实姓名"></el-table-column>
+      <el-table-column prop="truename" label="真实姓名" ></el-table-column>
       <el-table-column prop="Idcard" label="身份证号"></el-table-column>
       <el-table-column prop="pic" label="头像">
-        <template slot-scope="details_message">
-          <el-image src="details_message.pic"></el-image>
+        <template slot-scope="scope" >
+          <img :src="scope.row.pic"  style="width:80px;height: 80px">
         </template>
       </el-table-column>
       <el-table-column prop="constellation" label="星座"></el-table-column>
@@ -43,7 +43,7 @@ export default {
     }
   },
   methods: {
-    handleCurrentChange(val) {
+    handleCurrentChange (val) {
       console.log(`当前页 ${val} `)
       this.$axios.post('http://localhost:8888/sweet/Details_message/findAll?pageNum=' + val + '')
         .then(response => {

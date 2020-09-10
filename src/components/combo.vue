@@ -42,7 +42,7 @@
 
         <el-form-item label="状态" prop="state">
           <template>
-            <el-radio v-model="combo.state" name="state" label="0">正常</el-radio>
+            <el-radio v-model="combo.state" name="state" label="0" >正常</el-radio>
             <el-radio v-model="combo.state" name="state" label="1">已售完</el-radio>
           </template>
         </el-form-item>
