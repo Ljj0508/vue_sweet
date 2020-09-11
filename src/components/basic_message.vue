@@ -8,14 +8,11 @@
       <el-table-column prop="number" label="账号ID"></el-table-column>
       <el-table-column prop="bmname" label="昵称"></el-table-column>
       <el-table-column prop="age" label="年龄"></el-table-column>
-     <!-- <el-table-column prop="height" label="身高"></el-table-column>
-      <el-table-column prop="weight" label="体重"></el-table-column>-->
       <el-table-column prop="sex" label="性别">
         <template slot-scope="basic_message">
           {{basic_message.row.sex==0?"女":"男"}}
         </template>
       </el-table-column>
-      <!--<el-table-column prop="sex" label="性别"></el-table-column>-->
       <el-table-column prop="phone" label="手机号"></el-table-column>
       <el-table-column prop="pwd" label="密码"></el-table-column>
       <!--<el-table-column prop="address" label="工作地区"></el-table-column>
@@ -62,7 +59,7 @@
     </el-pagination>
 
     <!--修改模态框-->
-    <el-dialog width="40%" title="修改活动" :visible="updateVisible">
+    <el-dialog width="40%" title="修改信息" :visible="updateVisible">
       <el-form label-width="100px" label-suffix="：" :model="basic_message" class="form"  ref="fm">
         <el-form-item label="" prop="bmid">
           <el-input v-model="basic_message.bmid" name="bmid" type="hidden"></el-input>
@@ -82,13 +79,12 @@
         <el-form-item label="体重" prop="weight">
           <el-input v-model="basic_message.weight+ 'kg'" name="weight" readonly="true"></el-input>
         </el-form-item>
-        <!--<el-form-item label="性别" prop="sex">-->
-          <!--&lt;!&ndash;<el-input v-model="radio" name="sex" readonly="true"></el-input>&ndash;&gt;-->
-          <!--<template>-->
-            <!--<el-radio v-model="sex" label="0">女</el-radio>-->
-            <!--<el-radio v-model="sex" label="1">男</el-radio>-->
-          <!--</template>-->
-        <!--</el-form-item>-->
+        <el-form-item label="性别">
+          <el-radio-group v-model="basic_message.sex">
+            <el-radio :label="0">女</el-radio>
+            <el-radio :label="1">男</el-radio>
+          </el-radio-group>
+        </el-form-item>
         <el-form-item label="手机号" prop="phone">
           <el-input v-model="basic_message.phone" name="phone" readonly="true"></el-input>
         </el-form-item>
@@ -101,17 +97,12 @@
         <el-form-item label="出生年月" prop="birthday">
           <el-input v-model="basic_message.birthday" name="birthday" readonly="true"></el-input>
         </el-form-item>
-        <!--<el-form-item label="婚姻状况" prop="marriage">-->
-          <!--<el-input v-model="basic_message.marriage" name="marriage" readonly="true"></el-input>-->
-        <!--</el-form-item>-->
-        <!--<el-form-item label="会员" prop="vip">-->
-          <!--<el-input v-model="basic_message.vip" name="vip" readonly="true"></el-input>-->
-        <!--</el-form-item>-->
-        <el-form-item label="状态" prop="state">
-          <template>
-            <el-radio v-model="basic_message.state" name="state" label="0">正常</el-radio>
-            <el-radio v-model="basic_message.state" name="state" label="1">禁用</el-radio>
-          </template>
+
+        <el-form-item label="状态">
+          <el-radio-group v-model="basic_message.state">
+            <el-radio :label="0">正常</el-radio>
+            <el-radio :label="1">禁用</el-radio>
+          </el-radio-group>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">

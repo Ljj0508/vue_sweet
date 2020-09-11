@@ -39,12 +39,11 @@
         <el-form-item label="会员权益" prop="benefit">
           <el-input v-model="combo.benefit" name="benefit" readonly="true"></el-input>
         </el-form-item>
-
-        <el-form-item label="状态" prop="state">
-          <template>
-            <el-radio v-model="combo.state" name="state" label="0" >正常</el-radio>
-            <el-radio v-model="combo.state" name="state" label="1">已售完</el-radio>
-          </template>
+        <el-form-item label="状态">
+          <el-radio-group v-model="combo.state">
+            <el-radio :label="0">正常</el-radio>
+            <el-radio :label="1">已售完</el-radio>
+          </el-radio-group>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">

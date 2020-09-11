@@ -28,16 +28,19 @@
           <el-input v-model="top.topid" name="topid" type="hidden"></el-input>
         </el-form-item>
         <el-form-item label="套餐名称" prop="tname">
-          <el-input v-model="top.tname" name="tname"></el-input>
+          <el-input v-model="top.tname" name="tname" readonly="true"></el-input>
         </el-form-item>
         <el-form-item label="套餐价格" prop="price">
-          <el-input v-model="top.price" name="price"></el-input>
+          <el-input v-model="top.price" name="price" readonly="true"></el-input>
         </el-form-item>
         <el-form-item label="置顶权益" prop="benefit">
-          <el-input v-model="top.benefit" name="benefit"></el-input>
+          <el-input v-model="top.benefit" name="benefit" readonly="true"></el-input>
         </el-form-item>
-        <el-form-item label="状态" prop="state">
-          <el-input v-model="top.state" name="state"></el-input>
+        <el-form-item label="状态">
+          <el-radio-group v-model="top.state">
+            <el-radio :label="0">正常</el-radio>
+            <el-radio :label="1">已售完</el-radio>
+          </el-radio-group>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">

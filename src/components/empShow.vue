@@ -52,7 +52,8 @@
           <!--<el-input v-model="mesage.sex" name="sex" readonly="true"></el-input>-->
         <!--</el-form-item>-->
         <el-form-item label="手机号" prop="phone">
-          <el-input v-model="mesage.phone" name="phone"></el-input>
+          <!--<el-input v-model="mesage.phone" name="phone"></el-input>-->
+          <el-input v-model="mesage.phone" name="phone"  type="number"  @blur="animate()"></el-input>
         </el-form-item>
         <el-form-item label="住址" prop="address">
           <el-input v-model="mesage.address" name="address"  ></el-input>
@@ -114,6 +115,13 @@ export default {
     }
   },
   methods: {
+    animate () {
+      var re = /^1\d{10}$/
+      let str = this.phone
+      if (re.test(str)) {
+      } else {
+      }
+    },
     showDialog: function (row) {
     // 显示模态窗口
       this.updateVisible = true

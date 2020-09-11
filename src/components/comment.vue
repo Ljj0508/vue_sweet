@@ -14,7 +14,7 @@
       <el-table-column prop="title" label="评论的主贴标题"></el-table-column>
       <el-table-column prop="bmname" label="评论人名称"></el-table-column>
     </el-table>
-    <el-button type="primary" @click="PasteShow()" style="margin-left:1100px">返 回</el-button>
+    <el-button type="primary" @click="PasteShow()" style="margin-left:1000px">返 回</el-button>
   </div>
 </template>
 

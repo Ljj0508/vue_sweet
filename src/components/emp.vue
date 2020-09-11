@@ -55,11 +55,18 @@
         <el-form-item label="住址" prop="address">
           <el-input v-model="emp.address" name="address" readonly="true"></el-input>
         </el-form-item>
-        <el-form-item label="账号状态" prop="state">
-          <template>
-            <el-radio v-model="emp.state" name="state" label="0">正常</el-radio>
-            <el-radio v-model="emp.state" name="state" label="1">禁用</el-radio>
-          </template>
+        <!--<el-form-item label="账号状态" prop="state">-->
+          <!--<template>-->
+            <!--<el-radio v-model="emp.state" name="state" label="0">正常</el-radio>-->
+            <!--<el-radio v-model="emp.state" name="state" label="1">禁用</el-radio>-->
+            <!--&lt;!&ndash;<el-input v-model="emp.state" name="state"></el-input>&ndash;&gt;-->
+          <!--</template>-->
+        <!--</el-form-item>-->
+        <el-form-item label="账号状态">
+          <el-radio-group v-model="emp.state">
+            <el-radio :label="0">正常</el-radio>
+            <el-radio :label="1">禁用</el-radio>
+          </el-radio-group>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -117,8 +124,8 @@ export default {
   name: 'emp',
   data () {
     return {
-      sex: '0',
-      state: '0',
+      sex: 0,
+      state: 0,
       updateVisible: false,
       addVisible: false,
       // phone: '',

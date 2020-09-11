@@ -20,11 +20,11 @@
           {{emp.row.state==0?"正常":"禁用"}}
         </template>
       </el-table-column>
-      <el-table-column label="操作" fixed="right" width="130px">
-        <template slot-scope="scope">
-          <el-button type="primary" icon="el-icon-edit" @click="showDialog(scope.row)" circle></el-button>
-        </template>
-      </el-table-column>
+      <!--<el-table-column label="操作" fixed="right" width="130px">-->
+        <!--<template slot-scope="scope">-->
+          <!--&lt;!&ndash;<el-button type="primary" icon="el-icon-edit" @click="showDialog(scope.row)" circle></el-button>&ndash;&gt;-->
+        <!--</template>-->
+      <!--</el-table-column>-->
     </el-table>
 
     <!--修改模态框-->
