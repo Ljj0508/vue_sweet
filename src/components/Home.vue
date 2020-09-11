@@ -92,10 +92,10 @@
               <template slot="title">
                 <span class="spans">媒体管理</span>
               </template>
-              <el-menu-item index="6-1"  id="items">
-                <i></i>
-                <span @click="SuccessShow">成功案例</span>
-              </el-menu-item>
+              <!--<el-menu-item index="6-1"  id="items">-->
+                <!--<i></i>-->
+                <!--<span @click="SuccessShow">成功案例</span>-->
+              <!--</el-menu-item>-->
               <el-menu-item index="6-2"  id="items">
                 <i></i>
                 <span @click="media">节目广告</span>

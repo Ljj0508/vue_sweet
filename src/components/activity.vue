@@ -96,7 +96,7 @@
       </div>
     </el-dialog>
     <el-dialog width="40%" title="添加活动" :visible="addVisible">
-      <el-form label-width="100px" label-suffix="：" class="form"  ref="fm">
+      <el-form label-width="100px" label-suffix="：" class="form"  ref="fm" :model="activity" :rules="rules">
         <el-form-item label="活动标题" prop="title">
           <el-input v-model="activity.title" name="title"></el-input>
         </el-form-item>
@@ -141,7 +141,63 @@ export default {
       updateVisible: false,
       addVisible: false,
       ShowVisible: false,
-      activity: {}
+      activity: {},
+      rules: {
+        title: [
+          // require:进行校验,默认校验非空  message:提示信息  trigger:触发校验的事件
+          {required: true, message: '活动标题不能为空', trigger: 'blur'}
+          // 自定义校验规则
+
+        ],
+        achost: [
+          // require:进行校验,默认校验非空  message:提示信息  trigger:触发校验的事件
+          {required: true, message: '主办方不能为空', trigger: 'blur'}
+          // 自定义校验规则
+
+        ],
+        actime: [
+          // require:进行校验,默认校验非空  message:提示信息  trigger:触发校验的事件
+          {required: true, message: '活动时间不能为空', trigger: 'blur'}
+          // 自定义校验规则
+
+        ],
+        acaddress: [
+          // require:进行校验,默认校验非空  message:提示信息  trigger:触发校验的事件
+          {required: true, message: '活动地点不能为空', trigger: 'blur'}
+          // 自定义校验规则
+
+        ],
+        acpeople: [
+          // require:进行校验,默认校验非空  message:提示信息  trigger:触发校验的事件
+          {required: true, message: '活动人数不能为空', trigger: 'blur'}
+          // 自定义校验规则
+
+        ],
+        actype: [
+          // require:进行校验,默认校验非空  message:提示信息  trigger:触发校验的事件
+          {required: true, message: '活动类型不能为空', trigger: 'blur'}
+          // 自定义校验规则
+
+        ],
+        acrequest: [
+          // require:进行校验,默认校验非空  message:提示信息  trigger:触发校验的事件
+          {required: true, message: '活动要求不能为空', trigger: 'blur'}
+          // 自定义校验规则
+
+        ],
+        flow: [
+          // require:进行校验,默认校验非空  message:提示信息  trigger:触发校验的事件
+          {required: true, message: '活动流程不能为空', trigger: 'blur'}
+          // 自定义校验规则
+
+        ],
+        remark: [
+          // require:进行校验,默认校验非空  message:提示信息  trigger:触发校验的事件
+          {required: true, message: '备注不能为空', trigger: 'blur'}
+          // 自定义校验规则
+
+        ]
+      }
     }
   },
   methods: {
@@ -181,14 +237,18 @@ export default {
         })
     },
     add: function () {
-      this.$axios.post('http://localhost:8888/sweet/Activity/add', this.$qs.stringify(this.activity))
-        .then(response => {
-          if (response.data = 1) {
-            alert('添加成功')
-          } else {
-            alert('添加失败')
-          }
-        })
+      this.$refs['fm'].validate(valid => {
+        if (valid == true) {
+          this.$axios.post('http://localhost:8888/sweet/Activity/add', this.$qs.stringify(this.activity))
+            .then(response => {
+              if (response.data = 1) {
+                alert('添加成功')
+              }
+            })
+        } else {
+          alert('添加失败')
+        }
+      })
     }
   }
 }

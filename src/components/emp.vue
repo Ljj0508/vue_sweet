@@ -90,7 +90,9 @@
           </template>
         </el-form-item>
         <el-form-item label="手机号" prop="phone">
-          <el-input v-model="emp.phone" name="phone"></el-input>
+          <!--<el-input  v-model="emp.phone" name="phone" @input="handleInput(1)" type="number"  @blur="animate()" placeholder="请输入手机号" ></el-input>-->
+          <el-input v-model="emp.phone" name="phone"  type="number"  @blur="animate()"></el-input>
+          <!--<el-input name="phone" class="phone input-style" :class= "{'err-input':phone.err}" type="text" placeholder="请输入手机号" oninput="value=value.replace(/[^/d]/g,'')" maxlength="11" @blur="phone.test()"></el-input>-->
         </el-form-item>
         <el-form-item label="住址" prop="address">
           <el-input v-model="emp.address" name="address"></el-input>
@@ -119,6 +121,7 @@ export default {
       state: '0',
       updateVisible: false,
       addVisible: false,
+      // phone: '',
       emp: {},
       rules: {
         ename: [
@@ -140,10 +143,8 @@ export default {
 
         ],
         phone: [
-          // require:进行校验,默认校验非空  message:提示信息  trigger:触发校验的事件
-          {required: true, message: '电话不能为空', trigger: 'blur'}
-          // 自定义校验规则
-
+          {required: true, message: '电话不能为空', trigger: 'blur'},
+          {min: 11, max: 11, message: '手机号必须是11位', trigger: ['change', 'blur']}
         ],
         address: [
           // require:进行校验,默认校验非空  message:提示信息  trigger:触发校验的事件
@@ -166,6 +167,13 @@ export default {
             this.$router.push({name: 'emp', query: {Ph: response.data}})
           }
         })
+    },
+    animate () {
+      var re = /^1\d{10}$/
+      let str = this.phone
+      if (re.test(str)) {
+      } else {
+      }
     },
     showDialog: function (row) {
       // 显示模态窗口
