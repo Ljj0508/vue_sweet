@@ -13,7 +13,7 @@
           {{basic_message.row.sex==0?"女":"男"}}
         </template>
       </el-table-column>
-      <el-table-column prop="phone" label="手机号"></el-table-column>
+      <!--<el-table-column prop="phone" label="手机号"></el-table-column>-->
       <el-table-column prop="pwd" label="密码"></el-table-column>
       <!--<el-table-column prop="address" label="工作地区"></el-table-column>
       <el-table-column prop="birthday" label="出生年月"></el-table-column>-->
@@ -85,9 +85,9 @@
             <el-radio :label="1">男</el-radio>
           </el-radio-group>
         </el-form-item>
-        <el-form-item label="手机号" prop="phone">
-          <el-input v-model="basic_message.phone" name="phone" readonly="true"></el-input>
-        </el-form-item>
+        <!--<el-form-item label="手机号" prop="phone">-->
+          <!--<el-input v-model="basic_message.phone" name="phone" readonly="true"></el-input>-->
+        <!--</el-form-item>-->
         <el-form-item label="密码" prop="pwd">
           <el-input v-model="basic_message.pwd" name="pwd" readonly="true"></el-input>
         </el-form-item>

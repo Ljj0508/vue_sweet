@@ -114,8 +114,9 @@ export default {
         .then(response => {
           if (response.data = 1) {
             alert('修改成功')
-            if (this.dispose.way = 1) {
-              this.$axios.post('http://localhost:8888/sweet/message/addmes?one=' + this.dispose.bmid + '&context=' + '你已经被举报了，请注意你的措辞'
+            alert(this.dispose.bid)
+            if (this.dispose.way == 1) {
+              this.$axios.post('http://localhost:8888/sweet/message/addmes?one=' + this.dispose.bid + '&context=' + '你已经被举报了，请注意你的措辞'
               )
             }
           } else {

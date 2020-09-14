@@ -9,15 +9,15 @@
       <el-table-column prop="cvname" label="视频标题"></el-table-column>
       <el-table-column prop="voids" label="视频路径"></el-table-column>
       <!--<el-table-column prop="info" label="视频内容介绍"></el-table-column>-->
-      <el-table-column type="expand">
-        <template  slot-scope="class_vido">
-          <el-form label-position="left" inline class="demo-table-expand">
-            <el-form-item label="视频内容介绍:">
-              <span>{{class_vido.row.info}}</span>
-            </el-form-item>
-          </el-form>
-        </template>
-      </el-table-column>
+      <!--<el-table-column type="expand">-->
+        <!--<template  slot-scope="class_vido">-->
+          <!--<el-form label-position="left" inline class="demo-table-expand">-->
+            <!--<el-form-item label="视频内容介绍:">-->
+              <!--<span>{{class_vido.row.info}}</span>-->
+            <!--</el-form-item>-->
+          <!--</el-form>-->
+        <!--</template>-->
+      <!--</el-table-column>-->
       <el-table-column label="操作" fixed="right" width="130px">
         <template slot-scope="scope">
           <!--<el-button type="primary" icon="el-icon-edit" @click="showDialog(scope.row)" circle></el-button>-->
@@ -27,19 +27,6 @@
       </el-table-column>
     </el-table>
 
-    <el-dialog width="40%" title="详情" :visible="ShowVisible">
-      <el-table label-width="100px" label-suffix="：" :model="class_vido" class="form"  ref="fm">
-        <el-table-column label="视频内容介绍" prop="class_vido.info" >
-          <template slot-scope="class_vido">
-            {{class_vido.info}}
-          </template>
-        </el-table-column>
-      </el-table>
-      <div slot="footer" class="dialog-footer">
-        <el-button type="success" @click="ShowVisible = false">取 消</el-button>
-      </div>
-    </el-dialog>
-
     <el-dialog width="40%" title="添加视频" :visible="addVisible">
       <el-form label-width="100px" label-suffix="：" :model="class_vido" class="form"  ref="fm" :rules="rules">
         <el-form-item label="视频标题" prop="cvname">
@@ -47,9 +34,6 @@
         </el-form-item>
         <el-form-item label="视频路径" prop="voids">
           <el-input v-model="class_vido.voids" name="voids"></el-input>
-        </el-form-item>
-        <el-form-item label="视频内容介绍" prop="info">
-          <el-input v-model="class_vido.info" name="info"></el-input>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -67,7 +51,6 @@ export default {
     return {
       updateVisible: false,
       addVisible: false,
-      ShowVisible: false,
       class_vido: {},
       rules: {
         cvname: [
@@ -77,10 +60,6 @@ export default {
         voids: [
           // require:进行校验,默认校验非空  message:提示信息  trigger:触发校验的事件
           {required: true, message: '内容介绍不能为空', trigger: 'blur'}
-        ],
-        info: [
-          // require:进行校验,默认校验非空  message:提示信息  trigger:触发校验的事件
-          {required: true, message: '视频内容介绍不能为空', trigger: 'blur'}
         ]
       }
     }
